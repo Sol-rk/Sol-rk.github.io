@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <div id="wrapper">
+
+    <h1>Ball-milling Calculator</h1>
+    <p>The calculator on this page is~~(description)</p>
+
+    
+    <div id="calc1">
+      <h2>Impact Energy(E<sub>i</sub>)</h2>
+    <p>This calculates the point impact energy after one collision.</p>     
+      <label>
+      Machine:
+        <select id="Mac">
+          <option>premium line</option>
+          <option>classic line</option>  
+        </select>
+      </label><br/>
+      
+      <label>
+      Diameter of vial:<input type="number" value="47" id=Dv> 
+        <select id="Dvu">
+          <option>mm</option>
+          <option>cm</option>
+          <option>m</option>         
+        </select>
+      </label><br/>
+
+      <label>
+      Diameter of a ball:<input type="number" value="3" id=Db> 
+        <select id="Dbu">
+          <option>mm</option>
+          <option>cm</option>
+          <option>m</option>         
+        </select>
+      </label><br/>
+
+      <label>
+      Mass of a ball:<input type="number" value="89" id=Mb> 
+        <select id="Mbu">
+          <option>mg</option>
+          <option>g</option>
+          <option>kg</option>         
+        </select>
+      </label><br/>
+
+      <label>
+      RPM:<input type="number" value="850" id=RPM> 
+      </label><br/>
+      
+      <label>
+        <button id="buttonEi">E<sub>i</sub></button>
+        = <input type="text" id="Ei"> J
+      </label>
+    
+    </div>
+    <div id="calc2">
+      <h2>Emprical filling degree(Q)</h2>
+
+      <label>
+      Height of vial:<input type="number" value="13" id=Hv> 
+        <select id="Hvu">
+          <option>mm</option>
+          <option>cm</option>
+          <option>m</option>         
+        </select>
+      </label><br/>
+      <label>
+      Total number of balls:<input type="number" value="242" id=Nb>
+      </label>
+      <label><br/>
+        <button id="buttonQ">Q</button>
+        = <input type="text" id="Q">
+      </label>
+    </div>
+
+    
+    <div id="calc3">
+      <h2>Cumulative energy(E<sub>t</sub>)</h2>
+      <p>This calculates the cumulative energy of the milling process for time t.</p>
+
+      <label>
+      time:<input type="number" value="600" id=t> 
+        <select id="tu">
+          <option>s</option>
+          <option>m</option>        
+        </select>
+       </label><br/>
+      <label>
+        <button id="buttonEt">E<sub>t</sub></button>
+        = <input type="text" id="Et"> J
+      </label>
+    </div>
+    <li><a target="blank" href="https://www.lungerichlab.com/">Lungerich Group</a></li>
+    <li><a target="blank" href="https://scholar.google.com/citations?user=SqZM0A4AAAAJ&hl=de">Google Scholar</a></li>
+    
+    
+</div>
+
+  
+  <script src="script.js"></script>
+</body>
+
+</html>
