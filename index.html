@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>replit</title>
+  <title>Ball-milling Calculator</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
@@ -12,50 +12,73 @@
   <div id="wrapper">
 
     <h1>Ball-milling Calculator</h1>
-    <p>The calculator on this page is~~(description)</p>
+    <p>The calculator on this page is~~(description). </p>
 
-    
+    <div class="calculator">
+      
     <div id="calc1">
       <h2>Impact Energy(E<sub>i</sub>)</h2>
     <p>This calculates the point impact energy after one collision.</p>     
       <label>
       Machine:
-        <select id="Mac">
-          <option>premium line</option>
-          <option>classic line</option>  
+        <select id="Mac" >
+          <option>--Select a machine--</option>
+          <option>PULVERISETTE 7 premium line</option>
+          <option>PULVERISETTE 7 classic line</option>
+          <option>PULVERISETTE 5/2 classic line</option>
+          <option>Others</option>
         </select>
-      </label><br/>
+      </label>
+
+      <label>
+        Effective diameter of main disk:<input type="number" id=Dp >  
+        <select id="Dpu" >
+          <option>mm</option>
+          <option>cm</option>
+          <option>m</option>         
+        </select>
+      </label>
       
       <label>
-      Diameter of vial:<input type="number" value="47" id=Dv> 
+      Diameter of vial:<input type="number" id=Dv> 
         <select id="Dvu">
           <option>mm</option>
           <option>cm</option>
           <option>m</option>         
         </select>
-      </label><br/>
+      </label>
+       <label>
+         Transmission ratio:
+         <select id="Tt">
+           <option> </option>
+           <option>I_critical</option>
+           <option>I_relative</option>
+           <option>Others</option>
+         </select>
+         <input type="number" value="" id=i> 
+         
 
       <label>
-      Diameter of a ball:<input type="number" value="3" id=Db> 
+      Diameter of a ball:<input type="number"  id=Db> 
         <select id="Dbu">
           <option>mm</option>
           <option>cm</option>
           <option>m</option>         
         </select>
-      </label><br/>
+      </label>
 
       <label>
-      Mass of a ball:<input type="number" value="89" id=Mb> 
+      Mass of a ball:<input type="number" id=Mb> 
         <select id="Mbu">
           <option>mg</option>
           <option>g</option>
           <option>kg</option>         
         </select>
-      </label><br/>
+      </label>
 
       <label>
-      RPM:<input type="number" value="850" id=RPM> 
-      </label><br/>
+      RPM:<input type="number" id=RPM> 
+      </label>
       
       <label>
         <button id="buttonEi">E<sub>i</sub></button>
@@ -67,39 +90,244 @@
       <h2>Emprical filling degree(Q)</h2>
 
       <label>
-      Height of vial:<input type="number" value="13" id=Hv> 
-        <select id="Hvu">
+        Diameter of vial:<input type="number"  id=Dv1> 
+          <select id="Dvu1">
+            <option>mm</option>
+            <option>cm</option>
+            <option>m</option>         
+          </select>
+        </label>
+
+      <label>
+        Height of vial:<input type="number" id=Hv> 
+          <select id="Hvu">
+            <option>mm</option>
+            <option>cm</option>
+            <option>m</option>         
+          </select>
+        </label>
+        <label>
+      Diameter of a ball:<input type="number"  id=Db1> 
+        <select id="Dbu1">
           <option>mm</option>
           <option>cm</option>
           <option>m</option>         
         </select>
-      </label><br/>
+      </label>       
+
       <label>
-      Total number of balls:<input type="number" value="242" id=Nb>
+      Total number of balls:<input type="number"  id=Nb>
       </label>
-      <label><br/>
+      <label>
         <button id="buttonQ">Q</button>
         = <input type="text" id="Q">
       </label>
     </div>
-
     
     <div id="calc3">
       <h2>Cumulative energy(E<sub>t</sub>)</h2>
       <p>This calculates the cumulative energy of the milling process for time t.</p>
 
       <label>
-      time:<input type="number" value="600" id=t> 
+      Time:<input type="number" id=t> 
         <select id="tu">
           <option>s</option>
           <option>m</option>        
         </select>
-       </label><br/>
+       </label>
       <label>
         <button id="buttonEt">E<sub>t</sub></button>
         = <input type="text" id="Et"> J
       </label>
     </div>
+    </div>
+    
+    <p>Here, you can calculate the required RPM and time to achieve the cumulative energy you desire. Parameters are synchronized except RPM and time.</p>
+    <div class=calculator>    
+    
+    <div id="calc4">
+      <h2>RPM</h2>
+    <p>This calculates RPM~~ Please put every parameter in ~.</p>    
+      <label>
+        Total energy:<input type="number" id=Et4> 
+        <select id=Eu4>
+          <option>J</option>
+          <option>KJ</option>       
+        </select>
+      </label></br>    
+      <label>
+      Machine:
+        <select id="Mac4" >
+          <option>--Select a machine--</option>
+          <option>PULVERISETTE 7 premium line</option>
+          <option>PULVERISETTE 7 classic line</option>
+          <option>PULVERISETTE 5/2 classic line</option>
+          <option>Others</option>
+        </select>
+      </label>
+
+      <label>
+        Effective diameter of main disk:<input type="number" id=Dp4 >  
+        <select id="Dpu4" >
+          <option>mm</option>
+          <option>cm</option>
+          <option>m</option>         
+        </select>
+      </label>
+      <label>
+      Diameter of vial:<input type="number" id=Dv4> 
+        <select id="Dvu4">
+          <option>mm</option>
+          <option>cm</option>
+          <option>m</option>         
+        </select>
+      </label>
+      <label>
+         Transmission ratio:
+         <select id="Tt4">
+           <option> </option>
+           <option>I_critical</option>
+           <option>I_relative</option>
+           <option>Others</option>
+         </select>
+         <input type="number" value="" id=i4 ></label> </br>
+
+
+      <label>
+      Height of vial:<input type="number" id=Hv4> 
+        <select id="Hvu4">
+          <option>mm</option>
+          <option>cm</option>
+          <option>m</option>         
+        </select>
+      </label><br/>
+      
+      <label>
+      Diameter of a ball:<input type="number"  id=Db4> 
+        <select id="Dbu4">
+          <option>mm</option>
+          <option>cm</option>
+          <option>m</option>         
+        </select>
+      </label>
+
+      <label>
+      Mass of a ball:<input type="number" id=Mb4> 
+        <select id="Mbu4">
+          <option>mg</option>
+          <option>g</option>
+          <option>kg</option>         
+        </select>
+      </label>
+      <label>
+      Total number of balls:<input type="number"  id=Nb4>
+      </label></br>
+      <label>
+        Time:<input type="number" id=t4> 
+          <select id="tu4">
+            <option>s</option>
+            <option>m</option>        
+          </select>
+         </label><br/>
+      <label>
+        <button id="buttonRPM">RPM</button>
+        = <input type="text" id="RPM4"> 
+      </label>
+      </div>
+      
+    
+    <div id="calc5">
+      <h2>Time(s)</h2>
+    <p>This calculates Time~~ Please put every parameter in ~. </p>     
+      <label>
+        Total energy:<input type="number" id=Et5> 
+        <select id=Eu5>
+          <option>J</option>
+          <option>KJ</option>       
+        </select>
+      </label></br>    
+      <label>
+      Machine:
+        <select id="Mac5" >
+          <option>--Select a machine--</option>
+          <option>PULVERISETTE 7 premium line</option>
+          <option>PULVERISETTE 7 classic line</option>
+          <option>PULVERISETTE 5/2 classic line</option>
+          <option>Others</option>
+        </select>
+      </label>
+
+      <label>
+        Effective diameter of main disk:<input type="number" id=Dp5 onchange=>  
+        <select id="Dpu5" onchange=>
+          <option>mm</option>
+          <option>cm</option>
+          <option>m</option>         
+        </select>
+      </label>
+      <label>
+
+         <label>
+          Diameter of vial:<input type="number" id=Dv5> 
+            <select id="Dvu5">
+              <option>mm</option>
+              <option>cm</option>
+              <option>m</option>         
+            </select>
+          </label>
+        
+         Transmission ratio:
+         <select id="Tt5">
+           <option> </option>
+           <option>I_critical</option>
+           <option>I_relative</option>
+           <option>Others</option>
+         </select>
+         <input type="number" value="" id=i5 ></label> </br>
+
+ 
+      <label>
+      Height of vial:<input type="number" id=Hv5> 
+        <select id="Hvu5">
+          <option>mm</option>
+          <option>cm</option>
+          <option>m</option>         
+        </select>
+      </label><br/>
+
+      <label>
+      Diameter of a ball:<input type="number"  id=Db5> 
+        <select id="Dbu5">
+          <option>mm</option>
+          <option>cm</option>
+          <option>m</option>         
+        </select>
+      </label>
+
+      <label>
+      Mass of a ball:<input type="number" id=Mb5> 
+        <select id="Mbu5">
+          <option>mg</option>
+          <option>g</option>
+          <option>kg</option>         
+        </select>
+      </label>
+      <label>
+      Total number of balls:<input type="number"  id=Nb5>
+      </label></br>
+      <label>
+        RPM:<input type="number" id=RPM5> 
+      </label>
+      <label></br>
+        <button id="buttonT">Time</button>
+        = <input type="text" id="t5"> s 
+      </label>
+      </div>
+      </div>
+    
+<hr>
+
+      
     <li><a target="blank" href="https://www.lungerichlab.com/">Lungerich Group</a></li>
     <li><a target="blank" href="https://scholar.google.com/citations?user=SqZM0A4AAAAJ&hl=de">Google Scholar</a></li>
     
