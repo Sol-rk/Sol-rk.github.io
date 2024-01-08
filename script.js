@@ -1,827 +1,686 @@
-let Machine=document.getElementById("Mac");
-let Machine4=document.getElementById("Mac4");
-let Machine5=document.getElementById("Mac5");
-
-let Etotal4=document.getElementById("Et4");
-let Etotal5=document.getElementById("Et5");
-let Eunit4=document.getElementById("Eu4");
-let Eunit5=document.getElementById("Eu5");
-
-let Dplate = document.getElementById("Dp");
-let Dpunit = document.getElementById("Dpu");
-let Dplate4 = document.getElementById("Dp4");
-let Dpunit4 = document.getElementById("Dpu4");
-let Dplate5 = document.getElementById("Dp5");
-let Dpunit5 = document.getElementById("Dpu5");
-
-
-let Dvial= document.getElementById("Dv");
-let Dvunit = document.getElementById("Dvu");
-let Dvial1= document.getElementById("Dv1");
+let Target1 = document.getElementById("Target1");
+let Target2 = document.getElementById("Target2");
+let targetLabel1 = document.getElementById('targetLabel1');
+let targetLabel2 = document.getElementById('targetLabel2');
+let Machine1 = document.getElementById("Mac1");
+let Dplate1 = document.getElementById("Dp1");
+let Dpunit1 = document.getElementById("Dpu1");
+let Dvial1 = document.getElementById("Dv1");
 let Dvunit1 = document.getElementById("Dvu1");
-let Dvial4= document.getElementById("Dv4");
-let Dvunit4 = document.getElementById("Dvu4");
-let Dvial5= document.getElementById("Dv5");
-let Dvunit5 = document.getElementById("Dvu5");
+let Dvial2 = document.getElementById("Dv2");
+let Dvunit2 = document.getElementById("Dvu2");
+let Tratio1 = document.getElementById("i");
+let Ttype1 = document.getElementById("Tt1");
+let Hvial1 = document.getElementById("Hv1")
+let Hvunit1 = document.getElementById("Hvu1")
+let Hvial2 = document.getElementById("Hv2")
+let Hvunit2 = document.getElementById("Hvu2")
 
-let Dball= document.getElementById("Db");
-let Dbunit = document.getElementById("Dbu");
-let Dball1= document.getElementById("Db1");
+let Dball1 = document.getElementById("Db1");
 let Dbunit1 = document.getElementById("Dbu1");
-let Dball4= document.getElementById("Db4");
-let Dbunit4 = document.getElementById("Dbu4");
-let Dball5= document.getElementById("Db5");
-let Dbunit5 = document.getElementById("Dbu5");
+let Dball2 = document.getElementById("Db2");
+let Dbunit2 = document.getElementById("Dbu2");
+
+let Mball1 = document.getElementById("Mb1");
+let Mbunit1 = document.getElementById("Mbu1");
+let Mball2 = document.getElementById("Mb2");
+let Mbunit2 = document.getElementById("Mbu2");
+
+let RPerM1 = document.getElementById("RPM1");
+let f2 = document.getElementById("f2");
+let fu2 = document.getElementById("fu2");
+
+let time1 = document.getElementById("t1");
+let tunit1 = document.getElementById("tu1");
+let time2 = document.getElementById("t2");
+let tunit2 = document.getElementById("tu2");
+let Etotal1 = document.getElementById("Et1");
+let Etunit1 = document.getElementById("Etu1");
+let Etotal2 = document.getElementById("Et2");
+let Etunit2 = document.getElementById("Etu2");
+
+let Nball1 = document.getElementById("Nb1");
+let Nball2 = document.getElementById("Nb2");
+
+let R1 = document.getElementById("R1");
+let Ru1=document.getElementById("Ru1");
+let R2 = document.getElementById("R2");
+let Ru2=document.getElementById("Ru2");
+Ru2.disabled = true;
+Ru1.disabled = true;
+R2.disabled = true;
+R1.disabled = true;
 
 
-let Mball= document.getElementById("Mb");
-let Mbunit = document.getElementById("Mbu");
-let Mball4= document.getElementById("Mb4");
-let Mbunit4 = document.getElementById("Mbu4");
-let Mball5= document.getElementById("Mb5");
-let Mbunit5 = document.getElementById("Mbu5");
 
-
-let RPerM= document.getElementById("RPM");
-let RPerM5= document.getElementById("RPM5");
-
-let time = document.getElementById("t");
-let time4 = document.getElementById("t4");
-let time5 = document.getElementById("t5");
-
-let tunit=document.getElementById("tu");
-let tunit4=document.getElementById("tu4");
-
-let Tratio=document.getElementById("i");
-let Tratio4=document.getElementById("i4");
-let Tratio5=document.getElementById("i5");
-
-let Ttype=document.getElementById("Tt");
-let Ttype4=document.getElementById("Tt4");
-let Ttype5=document.getElementById("Tt5");
-
-let buttonEi= document.getElementById("buttonEi");
-let buttonRPM= document.getElementById("buttonRPM");
-let button= document.getElementById("buttonT");
-
-let Hvial=document.getElementById("Hv")
-let Hvial4=document.getElementById("Hv4")
-let Hvial5=document.getElementById("Hv5")
-let Hvunit=document.getElementById("Hvu")
-let Hvunit4=document.getElementById("Hvu4")
-let Hvunit5=document.getElementById("Hvu5")
-
-let Nball=document.getElementById("Nb")
-let Nball4=document.getElementById("Nb4")
-let Nball5=document.getElementById("Nb5")
-
-
-let Dv,Db,wp,wv,Ei,Q,fb,t,Nb,Rp,Rv,CDv;
-let wp4,wv4,Ei4,fb4,t4,RPM4,wp5,wv5,Ei5,fb5,t5,RPM5;
-let K=1;
-let MinDb, MaxDb, MinRPM, MaxRPM;
-let Mac= Machine.value;
-let Dp, DPu;
-let Ir,i;
+let K = 1;
+let Kc = 10;
+let MinDb, MaxDb, MinRPM, MaxRPM,RPM;
+let Mac1 = Machine1.value;
+let Ir, i;
+let Et1,t1,Et2,t2,Q1,Q2,CDb;
 
 /*synchronization of Db and Dv*/
-Dball.addEventListener('input', function() {
-  Dball1.value = Dball.value;
-  Dball4.value = Dball.value;
-  Dball5.value = Dball.value;
-});
-Dball1.addEventListener('input', function() {
-  Dball.value = Dball1.value;
-  Dball4.value = Dball.value;
-  Dball5.value = Dball.value;
-});
-Dball4.addEventListener('input', function() {
-  Dball1.value = Dball4.value;
-  Dball.value = Dball4.value;
-  Dball5.value = Dball4.value;
-});
-Dball5.addEventListener('input', function() {
-  Dball1.value = Dball5.value;
-  Dball4.value = Dball5.value;
-  Dball.value = Dball5.value;
+
+
+Target1.addEventListener("change", function() {
+  if (Target1.value === 'RPM') {
+    Ru1.value='';
+    R1.value='';
+    for (let option of Ru1.options) {
+      if (option.value !== '') {
+        option.style.display = 'none';
+      }
+    }
+    document.getElementById("RPM1G").style.display = "none"
+    document.getElementById("t1G").style.display = "block";
+    document.getElementById("Et1G").style.display = "block";
+
+  }
+    
+  else if (Target1.value === 'Time') {
+    Ru1.value='s';
+    R1.value='';
+    for (let option of Ru1.options) {
+      if (option.value !== 's' && option.value !== 'm') {
+        option.style.display = 'none';
+      }
+      else { option.style.display = 'block'; }
+    }
+    document.getElementById("RPM1G").style.display = "block";
+    document.getElementById("t1G").style.display = "none";
+    document.getElementById("Et1G").style.display = "block";
+    
+  }
+
+  else if (Target1.value === '--Select a parameter--') {
+      Ru1.value='';
+      R1.value='';
+      for (let option of Ru1.options) {
+   option.style.display = 'none';
+        }
+    document.getElementById("RPM1G").style.display = "block";
+    document.getElementById("t1G").style.display = "block";
+    document.getElementById("Et1G").style.display = "block";
+    
+    }
+  else {
+    Ru1.value='J';
+    R1.value='';
+    for (let option of Ru1.options) {
+      if (option.value !== 'J' && option.value !== 'KJ') {
+        option.style.display = 'none';
+      }
+      else { option.style.display = 'block'; }
+    }
+     document.getElementById("RPM1G").style.display = "block";
+    document.getElementById("t1G").style.display = "block";
+    document.getElementById("Et1G").style.display = "none";
+  }
 });
 
-Dbunit.addEventListener('change', function() {
-  Dbunit1.value = Dbunit.value;
-  Dbunit4.value = Dbunit.value;
-  Dbunit5.value = Dbunit.value; 
-});
-Dbunit1.addEventListener('change', function() {
-  Dbunit.value = Dbunit1.value;
-  Dbunit4.value = Dbunit.value;
-  Dbunit5.value = Dbunit.value;   
-});
-Dbunit4.addEventListener('change', function() {
-  Dbunit1.value = Dbunit4.value;
-  Dbunit.value = Dbunit4.value;
-  Dbunit5.value = Dbunit4.value; 
-});
-Dbunit5.addEventListener('change', function() {
-  Dbunit1.value = Dbunit5.value;
-  Dbunit4.value = Dbunit5.value;
-  Dbunit.value = Dbunit5.value; 
-});
-
-Mball.addEventListener('input', function() {
-  Mball4.value = Mball.value;
-  Mball5.value = Mball.value;
-});
-Mball4.addEventListener('input', function() {
-  Mball.value = Mball4.value;
-  Mball5.value = Mball4.value;
-});
-Mball5.addEventListener('input', function() {
-  Mball4.value = Mball5.value;
-  Mball.value = Mball5.value;
-});
-Mbunit.addEventListener('change', function() {
-  Mbunit4.value = Mbunit.value;
-  Mbunit5.value = Mbunit.value;
-});
-Mbunit4.addEventListener('change', function() {
-  Mbunit.value = Mbunit4.value;
-  Mbunit5.value = Mbunit4.value;
-});
-Mbunit5.addEventListener('change', function() {
-  Mbunit.value = Mbunit5.value;
-  Mbunit4.value = Mbunit5.value;
-});
-
-Nball.addEventListener('input', function() {
-  Nball4.value = Nball.value;
-  Nball5.value = Nball.value;
-
-});
-Nball4.addEventListener('input', function() {
-  Nball.value = Nball4.value;
-  Nball5.value = Nball4.value;
-});
-Nball5.addEventListener('input', function() {
-  Nball4.value = Nball5.value;
-  Nball.value = Nball5.value;
+Target2.addEventListener("change", function() {
+  if (Target2.value === 'Frequency') {
+    Ru2.value='Hz';
+    R2.value='';
+    for (let option of Ru2.options) {
+      if (option.value !== 'Hz') {
+        option.style.display = 'none';
+      }
+      else { option.style.display = 'block'; }
+    }
+    document.getElementById("f2G").style.display = "none";
+    document.getElementById("t2G").style.display = "block";
+    document.getElementById("Et2G").style.display = "block";
+  }
+  else if (Target2.value === 'Time') {
+    Ru2.value='s';
+    R2.value='';
+    for (let option of Ru2.options) {
+      if (option.value !== 's' && option.value !== 'm') {
+        option.style.display = 'none';
+      }
+      else { option.style.display = 'block'; }
+    }
+    document.getElementById("f2G").style.display = "block";
+    document.getElementById("t2G").style.display = "none";
+    document.getElementById("Et2G").style.display = "block";
+  }
+    else if (Target2.value === '--Select a parameter--') {
+      Ru2.value='';
+      R2.value='';
+      for (let option of Ru2.options) {
+    option.style.display = 'none';
+        }
+      document.getElementById("f2G").style.display = "block";
+      document.getElementById("t2G").style.display = "block";
+      document.getElementById("Et2G").style.display = "block";
+    }
+  else {
+    Ru2.value='J';
+    R2.value='';
+    for (let option of Ru2.options) {
+      if (option.value !== 'J' && option.value !== 'KJ') {
+        option.style.display = 'none';
+      }
+      else { option.style.display = 'block'; }
+    }
+    document.getElementById("f2G").style.display = "block";
+    document.getElementById("t2G").style.display = "block";
+    document.getElementById("Et2G").style.display = "none";
+  }
 });
 
-Machine.addEventListener("change", function() {
-  Machine4.value = Machine.value;
-  Machine5.value = Machine.value;
+
+Machine1.addEventListener("change", function() {
   updateDp();
   updateI();
+  if (Machine1.value === "Others") {
+    Dpu1.disabled = false;
+    Dp1.disabled = false;
+  }
+  else {
+    Dpu1.disabled = true;
+    Dp1.disabled = true;
+  }
 });
 
-Machine4.addEventListener("change", function() {
-  Machine.value = Machine4.value;
-  Machine5.value = Machine4.value;
-  updateDp();
+Dplate1.addEventListener("input", function() {
   updateI();
 });
-
-Machine5.addEventListener("change", function() {
-  Machine.value = Machine5.value;
-  Machine4.value = Machine5.value;
-  updateDp();
+Dpunit1.addEventListener("change", function() {
   updateI();
-});
-
-Etotal4.addEventListener('input', function() {
-  Etotal5.value = Etotal4.value;
-  });
-Etotal5.addEventListener('input', function() {
-Etotal4.value = Etotal5.value;
-});
-
-Eu4.addEventListener('change', function() {
-  Eunit5.value = Eunit4.value;
-});
-
-Eu5.addEventListener('change', function() {
-  Eunit4.value = Eunit5.value;
-});
-
-Dplate.addEventListener("input", function() {
-  Dplate4.value = Dplate.value;
-  Dplate5.value = Dplate.value;
-});
-
-Dplate4.addEventListener("input", function() {
-  Dplate.value = Dplate4.value;
-  Dplate5.value = Dplate4.value;
-});
-
-Dplate5.addEventListener("input", function() {
-  Dplate.value = Dplate5.value;
-  Dplate4.value = Dplate5.value;
-});
-
-Dpunit.addEventListener("change", function() {
-  Dpunit4.value = Dpunit.value;
-  Dpunit5.value = Dpunit.value;
-});
-
-Dpunit4.addEventListener("change", function() {
-  Dpunit.value = Dpunit4.value;
-  Dpunit5.value = Dpunit4.value;
-});
-
-Dpunit5.addEventListener("change", function() {
-  Dpunit.value = Dpunit5.value;
-  Dpunit4.value = Dpunit5.value;
-});
-
-Dvial.addEventListener('input', function() {
-  Dvial1.value = Dvial.value;
-  Dvial4.value = Dvial.value;
-  Dvial5.value = Dvial.value;
+  updateDp();
 });
 Dvial1.addEventListener('input', function() {
-  Dvial.value = Dvial1.value;
-  Dvial4.value = Dvial1.value;
-  Dvial5.value = Dvial1.value;
+  updateI();
 });
-Dvial4.addEventListener('input', function() {
-  Dvial.value = Dvial4.value;
-  Dvial1.value = Dvial4.value;
-  Dvial5.value = Dvial4.value;
+Dvunit1.addEventListener('input', function() {
+  updateI();
 });
-Dvial5.addEventListener('input', function() {
-  Dvial.value = Dvial5.value;
-  Dvial4.value = Dvial5.value;
-  Dvial1.value = Dvial5.value;
-});
-
-Dvunit.addEventListener('change', function() {
-  Dvunit1.value = Dvunit.value;
-  Dvunit4.value = Dvunit.value;
-  Dvunit5.value = Dvunit.value;
-});
-Dvunit1.addEventListener('change', function() {
-  Dvunit.value = Dvunit1.value;
-  Dvunit4.value = Dvunit1.value;
-  Dvunit5.value = Dvunit1.value;
-});
-Dvunit4.addEventListener('change', function() {
-  Dvunit.value = Dvunit4.value;
-  Dvunit1.value = Dvunit4.value;
-  Dvunit5.value = Dvunit4.value;
-});
-Dvunit5.addEventListener('change', function() {
-  Dvunit.value = Dvunit5.value;
-  Dvunit1.value = Dvunit5.value;
-  Dvunit4.value = Dvunit5.value;
-});
-
-Hvial.addEventListener('input', function() {
-  Hvial4.value = Hvial.value;
-  Hvial5.value = Hvial.value;
-});
-Hvial4.addEventListener('input', function() {
-  Hvial.value = Hvial4.value;
-  Hvial5.value = Hvial4.value;
-});
-Hvial5.addEventListener('input', function() {
-  Hvial4.value = Hvial5.value;
-  Hvial.value = Hvial5.value;
-});
-Hvunit.addEventListener('change', function() {
-  Hvunit4.value = Hvunit.value;
-  Hvunit5.value = Hvunit.value;
-});
-Hvunit4.addEventListener('change', function() {
-  Hvunit.value = Hvunit4.value;
-  Hvunit5.value = Hvunit4.value;
-});
-Hvunit5.addEventListener('change', function() {
-  Hvunit4.value = Hvunit5.value;
-  Hvunit1.value = Hvunit5.value;
-});
-
-Ttype.addEventListener('change', function() {
-  Ttype4.value = Ttype.value;
-  Ttype5.value = Ttype.value;
-});
-Ttype4.addEventListener('change', function() {
-  Ttype.value = Ttype4.value;
-  Ttype5.value = Ttype4.value;
-});
-  Ttype5.addEventListener('change', function() {
-  Ttype4.value = Ttype5.value;
-  Ttype.value = Ttype5.value;
-});
-
-Tratio.addEventListener('input', function() {
-  Tratio4.value = Tratio.value;
-  Tratio5.value = Tratio.value;
-});
-Tratio4.addEventListener('input', function() {
-  Tratio.value = Tratio4.value;
-  Tratio5.value = Tratio4.value;
-});
-Tratio5.addEventListener('input', function() {
-  Tratio4.value = Tratio5.value;
-  Tratio.value = Tratio5.value;
-});
-
-Ttype4.addEventListener('input', function() {
-  Tratio.value = Tratio4.value;
-  Tratio5.value = Tratio4.value;
-});
-  Tratio5.addEventListener('input', function() {
-  Tratio4.value = Tratio5.value;
-  Tratio.value = Tratio5.value;
-});
-
-
-/*synchronization of Db and Dv*/
-
-
-
+Ttype1.addEventListener("change", updateI);
+/*machine dependent Dp update*/
 function updateDp() {
   
-  let Mac = Machine.value;
-  let Dpu = Dpunit.value;
-  let Dp = parseFloat(Dplate.value);
-  
-  if (Mac === "PULVERISETTE 7 premium line"){
-    Rp=0.07;
-    Dp=Rp*2000;
-    Dpu = "mm";
+  let Mac1=Machine1.value; 
+  let Dpu1 = Dpunit1.value;
+  let Dp1 = parseFloat(Dplate1.value);
+
+  if (Mac1 === "PULVERISETTE 7 premium line") {
+    Rp = 0.07;
+    Dp1 = Rp * 2000;
+    Dpu1 = "mm";
   }
-  else if (Mac==="PULVERISETTE 7 classic line"){
-    Rp=0.07;
-    Dp=Rp*2000;
-    Dpu = "mm";
+  else if (Mac1 === "PULVERISETTE 7 classic line") {
+    Rp = 0.07;
+    Dp1 = Rp * 2000;
+    Dpu1 = "mm";
   }
-  else if (Mac==="PULVERISETTE 5/2 classic line"){
-    Rp=0.125;
-    Dp=Rp*2000;
-    Dpu = "mm";
+  else if (Mac1 === "PULVERISETTE 5/2 classic line") {
+    Rp = 0.125;
+    Dp1 = Rp * 2000;
+    Dpu1 = "mm";
   }
   else {
-    Dp=parseFloat(Dplate.value);
-    Dpu=Dpunit.value;
+    Dp1 = parseFloat(Dplate1.value);
+    Dpu1 = Dpunit1.value;
   }
-  Dplate.value = Dp;
-  Dplate4.value = Dp;
-  Dplate5.value = Dp;
-  Dpunit.value = Dpu;
-  Dpunit4.value = Dpu;
-  Dpunit5.value = Dpu;
+  Dplate1.value = Dp1;
+  Dpunit1.value = Dpu1;
+
+
 }
-
-
-if (Dpu==="mm"){Dp=Dp/1000;}
-else if (Dpu==="cm"){Dp=Dp/100;}
-else {Dp=Dp;}
-Rp=Dp / 2;
-
-Dv=parseFloat(Dvial.value);
-let Dvu=Dvunit.value;
-if (Dvu==="mm"){Dv=Dv/1000;}
-else if (Dvu==="cm"){Dv=Dv/100;}
-else {Dv=Dv;}
-Rv=Dv / 2;
-
-Db=parseFloat(Dball.value);
-let Dbu=Dbunit.value;
-if (Dbu==="mm"){CDb=Db/1000;}
-else if (Dbu==="cm"){CDb=Db/100;}
-else {CDb=Db;}
-Rb=CDb / 2;
-
-
-
-
-Ttype.addEventListener("change", updateI);
-Ttype4.addEventListener("change", updateI);
-Ttype5.addEventListener("change", updateI);
-Machine.addEventListener("change", updateI);
-
-
 function updateI() {
   let i;
-  let Mac=Machine.value;
+  let Mac1=Machine1.value; 
 
-  Dv=parseFloat(Dvial.value);
-  let Dvu=Dvunit.value;
-  if (Dvu==="mm"){Dv=Dv/1000;}
-  else if (Dvu==="cm"){Dv=Dv/100;}
-  else {Dv=Dv;}
-  Rv=Dv / 2;
 
-  if (Mac==="PULVERISETTE 7 premium line"){
-    Ir=2;
+  let Dv1 = parseFloat(Dvial1.value);
+  let Dvu1 = Dvunit1.value;
+  if (Dvu1 === "mm") { Dv1 = Dv1 / 1000; }
+  else if (Dvu1 === "cm") { Dv1 = Dv1 / 100; }
+  else { Dv1 = Dv1; }
+  let Rv1 = Dv1 / 2;
 
-  } else if (Mac==="PULVERISETTE 7 classic line"){
-    Ir=2;
-  } else if (Mac==="PULVERISETTE 5/2 classic line"){
-    Ir=2.19;
+  let Dp1 = parseFloat(Dplate1.value);
+  let Dpu1 = Dpunit1.value;
+  if (Dpu1 === "mm") { Dp1 = Dp1 / 1000; }
+  else if (Dpu1 === "cm") { Dp1 = Dp1 / 100; }
+  else { Dp1 = Dp1; }
+  let Rp1 = Dp1 / 2;
+
+  if (Mac1 === "PULVERISETTE 7 premium line") {
+    Ir = 2;
+
+  } else if (Mac1 === "PULVERISETTE 7 classic line") {
+    Ir = 2;
+  } else if (Mac1 === "PULVERISETTE 5/2 classic line") {
+    Ir = 2.19;
   }
-    else if (Mac==="Others"){
-    Ir=parseFloat(Tratio.value); 
+  else if (Mac1 === "Others") {
+    Ir = parseFloat(Tratio1.value);
   }
-  if (Ttype.value === "I_critical" ) {
-    i=1 + Math.sqrt(Rp/Rv);
+  if (Ttype1.value === "I_critical") {
+    i = 1 + Math.sqrt(Rp1 / Rv1);
   }
-  else if(Ttype.value === "I_relative" ){
-    i=Ir;
+  else if (Ttype1.value === "I_relative") {
+    i = Ir;
   }
-  else if(Ttype.value === "Others"){
-    i=parseFloat(Tratio.value);  
+  else if (Ttype1.value === "Others") {
+    i = parseFloat(Tratio1.value);
   }
-  Tratio.value = i;
-  Tratio4.value = i;
-  Tratio5.value = i;  
-  
+  Tratio1.value = i;
+
+  if (Ttype1.value === "Others") {
+    Tratio1.disabled = false;
+  }
+  else {
+    Tratio1.disabled = true;
+    if (Mac1 === "Others") {
+      Tratio1.disabled = false;
+      if (Ttype1.value === "I_critical") {
+        Tratio1.disabled = true;
+      }
+    }
+  }
 }
 
 
+/* from here we need to calculate something..*/
+let buttonCal1 = document.getElementById("Cal1");
 
-buttonEi.addEventListener("click", function(){
-  
-  let RPM=parseFloat(RPerM.value);
-  let Mac = Machine.value;
-  wp=2 * Math.PI * RPM / 60;
-  let MinDb, MaxDb, MinRPM, MaxRPM;
-  let Db=parseFloat(Dball.value);
-  let Dbu=Dbunit.value;
+buttonCal1.addEventListener("click", function() {
 
-  
-  if (Dbu==="mm"){CDb=Db/1000;}
-  else if (Dbu==="cm"){CDb=Db/100;}
-  else {CDb=Db;}
-  Rb=CDb / 2;
+  let Mac1=Machine1.value; 
+  RPM=parseFloat(RPerM1.value);
+  let Db1 = parseFloat(Dball1.value);
+  let Dbu1 = Dbunit1.value;
+  if (Dbu1 === "mm") { CDb = Db1 / 1000; }
+  else if (Dbu1 === "cm") { CDb = Db1 / 100; }
+  else { CDb = Db1; }
+  let Rb1 = CDb / 2;
 
-  Dv=parseFloat(Dvial.value);
-  let Dvu=Dvunit.value;
-  if (Dvu==="mm"){Dv=Dv/1000;}
-  else if (Dvu==="cm"){Dv=Dv/100;}
-  else {Dv=Dv;}
-  Rv=Dv / 2;
+  Dv1 = parseFloat(Dvial1.value);
+  let Dvu1 = Dvunit1.value;
+  if (Dvu1 === "mm") { Dv1 = Dv1 / 1000; }
+  else if (Dvu1 === "cm") { Dv1 = Dv1 / 100; }
+  else { Dv1 = Dv1; }
+  let Rv1 = Dv1 / 2;
+  /* fixed values by machine*/
+  if (Mac1 === "PULVERISETTE 7 premium line") {
+    MinDb = 0.0001;
+    MaxDb = 0.02;
+    MinRPM = 150;
+    MaxRPM = 1100;
 
-  if (Mac==="PULVERISETTE 7 premium line"){
-    MinDb=0.0001;
-    MaxDb= 0.02;
-    MinRPM= 150;
-    MaxRPM= 1100;
-    Rp=0.07;
-    Dp=Rp*2000;
-    Dpu = "mm";
+  } else if (Mac1 === "PULVERISETTE 7 classic line") {
+    MinDb = 0.0001;
+    MaxDb = 0.015;
+    MinRPM = 100;
+    MaxRPM = 800;
 
-  } else if (Mac==="PULVERISETTE 7 classic line"){
-    MinDb=0.0001;
-    MaxDb= 0.015;
-    MinRPM= 100;
-    MaxRPM= 800;
-    Rp=0.07;
-    Dp=Rp*2000;
-    Dpu = "mm";
-
-  } else if (Mac==="PULVERISETTE 5/2 classic line"){
-    MinDb=0.0001;
-    MaxDb= 0.04;
-    MinRPM= 50;
-    MaxRPM= 400;
-    Rp=0.125;
-    Dp=Rp*2000;
-    Dpu = "mm";
+  } else if (Mac1 === "PULVERISETTE 5/2 classic line") {
+    MinDb = 0.0001;
+    MaxDb = 0.04;
+    MinRPM = 50;
+    MaxRPM = 400;
 
   } else {
-    MinDb=0;
-    MaxDb= 100000;
-    MinRPM= 0;
-    MaxRPM= 1000000; 
+    MinDb = 0;
+    MaxDb = 100000;
+    MinRPM = 0;
+    MaxRPM = 1000000;
   }
+  /* value warning*/
 
-  if (CDb < MinDb || CDb > MaxDb){
-    alert(`Please enter a ball diameter between ${MinDb*1000} and ${MaxDb*1000} mm.`)
+
+  let Dp1 = parseFloat(Dplate1.value);
+  let Dpu1 = Dpunit1.value;
+  if (Dpu1 === "mm") { Dp1 = Dp1 / 1000; }
+  else if (Dpu1 === "cm") { Dp1 = Dp1 / 100; }
+  else { Dp1 = Dp1; }
+  let Rp1 = Dp1 / 2;
+
+  let Mb1 = parseFloat(Mball1.value);
+  let Mbu1 = Mbunit1.value;
+  if (Mbu1 === "mg") { Mb1 = Mb1 / 1000000; }
+  else if (Mbu1 === "g") { Mb1 = Mb1 / 1000; }
+  else { Mb1 = Mb1; }
+
+  let i = Tratio1.value;
+
+
+  let Hv1 = parseFloat(Hvial1.value);
+  let Hvu1 = Hvunit1.value;
+  if (Hvu1 === "mm") { Hv1 = Hv1 / 1000; }
+  else if (Hvu1 === "cm") { H1 = Hv1 / 100; }
+  else { Hv1 = Hv1; }
+
+  let Nb1 = parseFloat(Nball1.value);
+  let t1 = parseFloat(time1.value);
+  let tu1 = tunit1.value;
+  if (tu1 === "m") { t1 = t1 * 60; }
+  else { t1 = t1; }
+  Et1 = parseFloat(Etotal1.value);
+  let Etu1 = Etunit1.value;
+  if (Etu1 === "KJ") { Et1 = Et1 * 1000; }
+  else { Et1 = Et1; }
+
+
+
+  if (Target1.value === "Time") {
+
+    let wp1 = 2 * Math.PI * RPM / 60;
+    let wv1 = -i * wp1;
+    let Vb = Math.sqrt((wp1 * Rp1) ** 2 + wv1 ** 2 * (Rv1 - Rb1) ** 2 * (1 - 2 * wv1 / wp1));
+    let Vs = Math.sqrt((wp1 * Rp1) ** 2 + wv1 ** 2 * (Rv1 - Rb1) ** 2 + 2 * wp1 * wv1 * Rp1 * (Rv1 - Rb1));
+    let Ei1 = 0.5 * Mb1 * (Vb ** 2 - Vs ** 2);
+
+    let Nbv1 = Math.PI * Dv1 ** 2 * Hv1 / 4 * CDb ** (-3);
+    let Nv1 = Nb1 / Nbv1;
+    let Nbs1 = Math.PI * (Dv1 - CDb) * Hv1 / 3 * CDb ** (-2);
+    let Ns1 = Nb1 / Nbs1;
+
+    let e1 = Math.log(1 - 0.95) / Math.log(Nbs1 / Nbv1);
+    Q1 = 1 - Math.pow(Nv1, e1);
+
+
+
+    let fb1 = K * (wp1 - wv1) / (2 * Math.PI);
+    t1 = Et1 / (Q1 * Ei1 * Nb1 * fb1);
+    if (Ru1.value==="m"){R1.value=t1/60;}
+    else {R1.value = t1;}
+    if (RPM < MinRPM || RPM > MaxRPM) {
+      alert(`Please enter RPM between ${MinRPM} and ${MaxRPM}.`)
+      return;}
+  
+  }
+  else if (Target1.value === "RPM") {
+
+    let wp1 = 2 * Math.PI / 60;
+    let wv1 = -i * wp1;
+    let Vb = Math.sqrt((wp1 * Rp1) ** 2 + wv1 ** 2 * (Rv1 - Rb1) ** 2 * (1 - 2 * wv1 / wp1));
+    let Vs = Math.sqrt((wp1 * Rp1) ** 2 + wv1 ** 2 * (Rv1 - Rb1) ** 2 + 2 * wp1 * wv1 * Rp1 * (Rv1 - Rb1));
+    let Ei1 = 0.5 * Mb1 * (Vb ** 2 - Vs ** 2);
+
+    let Nbv1 = Math.PI * Dv1 ** 2 * Hv1 / 4 * CDb ** (-3);
+    let Nv1 = Nb1 / Nbv1;
+    let Nbs1 = Math.PI * (Dv1 - CDb) * Hv1 / 3 * CDb ** (-2);
+    let Ns1 = Nb1 / Nbs1;
+
+    let e1 = Math.log(1 - 0.95) / Math.log(Nbs1 / Nbv1);
+    Q1 = 1 - Math.pow(Nv1, e1);
+
+    let fb1 = K * (wp1 - wv1) / (2 * Math.PI);
+
+    RPM = Math.pow(Et1 / (Q1 * Ei1 * Nb1 * fb1 * t1), 1 / 3);
+    R1.value = RPM;
+    
+    if (RPM < MinRPM || RPM > MaxRPM) {
+      alert(`Calculated RPM(${RPM.toFixed(2)}) is not within the acceptable range of ${MinRPM} and ${MaxRPM}. Please adjust the parameters accordingly.`)
+      return;}
+
+
+  } else {
+    let wp1 = 2 * Math.PI * RPM / 60;
+    let wv1 = -i * wp1;
+    let Vb = Math.sqrt((wp1 * Rp1) ** 2 + wv1 ** 2 * (Rv1 - Rb1) ** 2 * (1 - 2 * wv1 / wp1));
+    let Vs = Math.sqrt((wp1 * Rp1) ** 2 + wv1 ** 2 * (Rv1 - Rb1) ** 2 + 2 * wp1 * wv1 * Rp1 * (Rv1 - Rb1));
+    let Ei1 = 0.5 * Mb1 * (Vb ** 2 - Vs ** 2);
+
+    let Nbv1 = Math.PI * Dv1 ** 2 * Hv1 / 4 * CDb ** (-3);
+    let Nv1 = Nb1 / Nbv1;
+    let Nbs1 = Math.PI * (Dv1 - CDb) * Hv1 / 3 * CDb ** (-2);
+    let Ns1 = Nb1 / Nbs1;
+
+    let e1 = Math.log(1 - 0.95) / Math.log(Nbs1 / Nbv1);
+    Q1 = 1 - Math.pow(Nv1, e1);
+
+    let fb1 = K * (wp1 - wv1) / (2 * Math.PI);
+    
+    Et1 = Q1 * Ei1 * Nb1 * fb1 * t1;
+
+    if (Ru1.value==="KJ"){R1.value=Et1/1000;}
+    else {R1.value = Et1;}
+    
+    if (RPM < MinRPM || RPM > MaxRPM) {
+      alert(`Please enter RPM between ${MinRPM} and ${MaxRPM}.`)
+      return;}
+  }
+  if (Q1 <= 0 || Q1 >= 1) {
+    alert(`Calculated Q(${Q1.toFixed(2)}) is not within the acceptable range of 0 to 1. Please adjust the parameters accordingly.`)
     return;
   }
-    else if(RPM < MinRPM || RPM > MaxRPM){
-    alert(`Please enter RPM between ${MinRPM} and ${MaxRPM}.`)
+  if (CDb < MinDb || CDb > MaxDb) {
+    alert(`Please enter a ball diameter between ${MinDb * 1000} and ${MaxDb * 1000} mm.`)
     return;
   }
 
-  let Mb=parseFloat(Mball.value);
-  let Mbu=Mbunit.value;
-  
-  if (Mbu==="mg"){Mb=Mb/1000000;}
-  else if (Mbu==="g"){Mb=Mb/1000;}
-  else {Mb=Mb;}
-  
-  let i = Tratio.value;
-  wv=-i * wp;
-  let Vb=Math.sqrt((wp * Rp)**2+ wv**2 * (Rv - Rb)**2 * (1-2 * wv / wp)) ;          
-  let Vs=Math.sqrt((wp * Rp)**2+ wv**2 * (Rv - Rb)**2 + 2 * wp * wv * Rp * (Rv-Rb));
-  Ei=0.5 * Mb * (Vb**2 - Vs**2);
-  document.getElementById("Ei").value=Ei;
 
 });
 
-let buttonQ= document.getElementById("buttonQ");
-
-buttonQ.addEventListener("click", function(){
-  
-  buttonEi.click();
-  let Hv=parseFloat(Hvial.value);
-  let Hvu=Hvunit.value;
-  if (Hvu==="mm"){Hv=Hv/1000;}
-  else if (Hvu==="cm"){Hv=Hv/100;}
-  else {Hv=Hv;}
-
-  Nb=parseFloat(Nball.value);
-  
-  let Nbv=Math.PI * Dv**2 * Hv / 4 * CDb**(-3);   
-  let Nv=Nb/Nbv;                    
-  let Nbs=Math.PI * (Dv-CDb) * Hv / 3 * CDb**(-2);
-  let Ns=Nb/Nbs;
-
-  let e=Math.log(1-0.95)/Math.log(Nbs/Nbv);
-     
-  Q=1-Math.pow(Nv, e);
-  
-  document.getElementById("Q").value=Q;
-  
-  if (Q <= 0 || Q >= 1){
-    alert(`Calculated Q is not within the acceptable range of 0 to 1. Please adjust the parameters accordingly.`)
-    return;
-  }
-
+Ru1.addEventListener("change",function(){
+    if (Ru1.value ==="m") {R1.value=t1/60;}
+    else if (Ru1.value ==="s") {R1.value=t1;}
+    else if (Ru1.value==="KJ"){R1.value= Et1/1000;}
+    else if(Ru1.value==="J"){R1.value=Et1;}
   });
   
-let buttonEt= document.getElementById("buttonEt");
+document.getElementById('Target1').addEventListener('change', function() {
+const selectedOption = this.value;
 
-buttonEt.addEventListener("click", function(){
-  buttonQ.click();
-  fb=K*(wp-wv)/(2*Math.PI);
-  t=parseFloat(time.value);
-  let tu=tunit.value;
-  if (tu==="m"){t=t*60;}
-  else {t=t;}
-  let Et=Q*Ei*Nb*fb*t;
-  document.getElementById("Et").value=Et;
+Ru1.disabled = false;
+// Update label text based on selected option
+switch (selectedOption) {
+  case 'Cumulative Energy(Et)':
+    targetLabel1.innerText = 'Et = ';
+    break;
+  case 'RPM':
+    targetLabel1.innerText = 'RPM = ';
+    break;
+  case 'Time':
+    targetLabel1.innerText = 'Time = ';
+    break;
+  default:
+    targetLabel1.innerText = 'Result';
+    Ru1.disabled = true;
+    break;
+}
+});
+
+let buttonCl1 = document.getElementById("Clear1");
+
+buttonCl1.addEventListener("click", function() {
+  Target1.value = "--Select a parameter--"
+  Machine1.value = "--Select a machine--"; // Replace with default value if available
+  Dplate1.value = "";
+  Dpunit1.value = "mm"; // Replace with default value if available
+  Dvial1.value = "";
+  Dvunit1.value = "mm"; // Replace with default value if available
+  Tratio1.value = "";
+  Ttype1.value = ""; // Replace with default value if available
+  Hvial1.value = "";
+  Hvunit1.value = "mm"; // Replace with default value if available
+  Dball1.value = "";
+  Dbunit1.value = "mm"; // Replace with default value if available
+  Mball1.value = "";
+  Mbunit1.value = "mg"; // Replace with default value if available
+  Nball1.value = "";
+  targetLabel1.innerText="Result = ";
+  R1.value = "";
+  Ru1.value = "";
+  t1="";
+  Et1="";
+  Ru1.disabled = true;
+
   
+
+  // Reset the display of elements if needed
+  document.getElementById("RPM1G").style.display = "block";
+  document.getElementById("t1G").style.display = "block";
+  document.getElementById("Et1G").style.display = "block";
+  RPerM1.value = "";
+  time1.value = ""; 
+  tunit1.value = "s";
+  Etotal1.value = "";
+  Etunit1.value = "J"
+});
+
+
+
+
+let buttonCal2 = document.getElementById("Cal2");
+buttonCal2.addEventListener("click", function() {
+
+  let Dv2 = parseFloat(Dvial2.value);
+  let Dvu2 = Dvunit2.value;
+  let Mb2 = parseFloat(Mball2.value);
+  let Mbu2 = Mbunit2.value;
+
+  if (Dvu2 === "mm") {
+    Dv2 = Dv2 / 1000;
+  } else if (Dvu2 === "cm") {
+    Dv2 = Dv2 / 100;
+  } else { Dv2 = Dv2; }
+  if (Mbu2 === "mg") {
+    Mb2 = Mb2 / 1000000;
+  } else if (Mbu2 === "g") {
+    Mb2 = Mb2 / 1000;
+  } else { Mb2 = Mb2; }
+
+  let Db2 = parseFloat(Dball2.value);
+  let Dbu2 = Dbunit2.value;
+  let Hv2 = parseFloat(Hvial2.value);
+  let Hvu2 = Hvunit2.value;
+  let Nb2 = parseFloat(Nball2.value);
+  if (Dbu2 === "mm") {
+    Db2 = Db2 / 1000;
+  } else if (Dbu2 === "cm") {
+    Db2 = Db2 / 100;
+  } else { Db2 = Db2; }
+  if (Hvu2 === "mm") {
+    Hv2 = Hv2 / 1000
+  } else if (Hvu2 === "cm") {
+    Hv2 = Hv2 / 100;
+  } else { Hv2 = Hv2; }
+   t2 = parseFloat(time2.value);
+  let tu2 = tunit2.value;
+  if (tu2 === "m") { t2 = t2 * 60; }
+  else { t2 = t2; }
+  Et2 = parseFloat(Etotal2.value);
+  if (Etunit2.value === "KJ") {
+    Et2 = Et2 * 1000;
+  }
+
+  if (Target2.value === "Frequency") {
+
+    let Nbv = Math.PI * Dv2 ** 2 * Hv2 / 4 * Db2 ** (-3);
+    let Nv = Nb2 / Nbv;
+    let Nbs = Math.PI * (Dv2 - Db2) * Hv2 / 3 * Db2 ** (-2)
+    let e = Math.log(1 - 0.95) / Math.log(Nbs / Nbv);
+
+    Q2 = 1 - Math.pow(Nv, e);
+
+    
+    R2.value = Math.pow((Et2 * 2 / (Q2 * Mb2 * Nb2 * t2 * Kc * Math.PI ** 2 * Dv2 ** 2)), 1 / 3);
+
+  }
+  else if (Target2.value === "Time") {
+
+    let Ei2 = 0.5 * Mb2 * (2 * Math.PI * f2.value * 0.5 * Dv2) ** 2;
+
+    let Nbv = Math.PI * Dv2 ** 2 * Hv2 / 4 * Db2 ** (-3);
+    let Nv = Nb2 / Nbv;
+    let Nbs = Math.PI * (Dv2 - Db2) * Hv2 / 3 * Db2 ** (-2)
+    let e = Math.log(1 - 0.95) / Math.log(Nbs / Nbv);
+
+    Q2 = 1 - Math.pow(Nv, e);
+
+    
+
+    t2 = Et2 / (Q2 * Ei2 * Nb2 * K * f2.value * Kc);
+    if (Ru2.value==="m"){R2.value=t2/60;}
+    else {R2.value = t2;}
+
+  }
+  else {
+    let Ei2 = 0.5 * Mb2 * (2 * Math.PI * f2.value * 0.5 * Dv2) ** 2;
+
+    let Nbv = Math.PI * Dv2 ** 2 * Hv2 / 4 * Db2 ** (-3);
+    let Nv = Nb2 / Nbv;
+    let Nbs = Math.PI * (Dv2 - Db2) * Hv2 / 3 * Db2 ** (-2)
+    let e = Math.log(1 - 0.95) / Math.log(Nbs / Nbv);
+
+    Q2 = 1 - Math.pow(Nv, e);
+
+    
+
+    Et2 = Q2 * Ei2 * Nb2 * K * f2.value * t2 * Kc;
+    if (Ru2.value==="KJ"){R2.value=Et2/1000;}
+    else {R2.value = Et2;}
+  }
+  if (Q2 <= 0 || Q2 >= 1) {
+    alert(`Calculated Q(${Q2.toFixed(2)}) is not within the acceptable range of 0 to 1. Please adjust the parameters accordingly.`)
+    return;
+  }
+});
+
+Ru2.addEventListener("change",function(){
+  if (Ru2.value ==="m") { R2.value=t2/60;}
+  else if (Ru2.value ==="s") {R2.value=t2;}
+  else if (Ru2.value==="KJ"){R2.value= Et2/1000;}
+  else if(Ru2.value==="J"){R2.value=Et2;}
   
 });
 
-buttonRPM.addEventListener("click", function(){
+let buttonCl2 = document.getElementById("Clear2");
 
-  let Et4 = parseFloat(Etotal4.value);
+buttonCl2.addEventListener("click", function() {
+  Target2.value = "--Select a parameter--"
+  Dvial2.value = "";
+  Dvunit2.value = "mm";
+  Hvial2.value = "";
+  Hvunit2.value = "mm";
+  Dball2.value = "";
+  Dbunit2.value = "mm";
+  Mball2.value = "";
+  Mbunit2.value = "mg";
+  Nball2.value = "";
+  R2.value = "";
+  Ru2.value = "";
+  t2="";
+  Et2="";
+  Ru2.disabled = true;
   
-  if (Eunit4.value ==="KJ") {
-    Et4=Et4*1000;
-  }
-  let Mac = Machine.value;
-  let wp4=2 * Math.PI / 60;
-  let MinDb, MaxDb, MinRPM, MaxRPM, Rp;
-  let Db=parseFloat(Dball.value);
-  let Dbu=Dbunit.value;
-  
-
-  if (Dbu==="mm"){
-    CDb=Db/1000;
-  }
-  else if (Dbu==="cm"){
-    CDb=Db/100;
-  }
-  else {
-    CDb=Db;
-  }
-  Rb=CDb / 2;
-
-  Dv=parseFloat(Dvial.value);
-  let Dvu=Dvunit.value;
-  if (Dvu==="mm"){
-    Dv=Dv/1000;
-  }
-  else if (Dvu==="cm"){
-    Dv=Dv/100;
-  }
-  else {
-    Dv=Dv;
-  }
-  Rv=Dv / 2;
-
-  if (Mac==="PULVERISETTE 7 premium line"){
-    MinDb=0.0001;
-    MaxDb= 0.02;
-    MinRPM= 150;
-    MaxRPM= 1100;
-    Rp=0.07;
-    Dp=Rp*2000;
-    Dpu = "mm";
-
-  } else if (Mac==="PULVERISETTE 7 classic line"){
-    MinDb=0.0001;
-    MaxDb= 0.015;
-    MinRPM= 100;
-    MaxRPM= 800;
-    Rp=0.07;
-    Dp=Rp*2000;
-    Dpu = "mm";
-
-  } else if (Mac4==="PULVERISETTE 5/2 classic line"){
-    MinDb=0.0001;
-    MaxDb= 0.04;
-    MinRPM= 50;
-    MaxRPM= 400;
-    Rp=0.125;
-    Dp=Rp*2000;
-    Dpu = "mm";
-
-  } else {
-    MinDb=0;
-    MaxDb= 100000;
-    MinRPM= 0;
-    MaxRPM= 1000000;
-    Dp=parseFloat(Dplate.value);
-    Dpu=Dpunit.value; 
-  }
-
-  if (CDb < MinDb || CDb > MaxDb){
-    alert(`Please enter a ball diameter between ${MinDb*1000} and ${MaxDb*1000} mm.`)
-    return;
-  }
-
-  let Mb=parseFloat(Mball.value);
-  let Mbu=Mbunit.value;
-
-  if (Mbu==="mg"){Mb=Mb/1000000;}
-  else if (Mbu==="g"){Mb=Mb/1000;}
-  else {Mb=Mb;}
-
-  let i = Tratio.value;
-  let wv4=-i * wp4;
-   Vb4=Math.sqrt((wp4 * Rp)**2+ wv4**2 * (Rv - Rb)**2 * (1-2 * wv4 / wp4)) ;          
-   Vs4=Math.sqrt((wp4 * Rp)**2+ wv4**2 * (Rv - Rb)**2 + 2 * wp4 * wv4 * Rp * (Rv-Rb));
-  let Ei4=0.5 * Mb * (Vb4**2 - Vs4**2);
-
-  let fb4=K*(wp4-wv4)/(2*Math.PI);
-  let t4=parseFloat(time4.value);
-  let tu4=tunit4.value;
-  if (tu4==="m"){t4=t4*60;}
-  else {t4=t4;}
-
-  let Hv=parseFloat(Hvial.value);
-  let Hvu=Hvunit.value;
-  if (Hvu==="mm"){Hv=Hv/1000;}
-  else if (Hvu==="cm"){Hv=Hv/100;}
-  else {Hv=Hv;}
-  let Nb=parseFloat(Nball.value);
-
-  let Nbv=Math.PI * Dv**2 * Hv / 4 * CDb**(-3);   
-  let Nv=Nb/Nbv;                    
-  let Nbs=Math.PI * (Dv-CDb) * Hv / 3 * CDb**(-2);
-  let Ns=Nb/Nbs;
-
-  let e=Math.log(1-0.95)/Math.log(Nbs/Nbv);
-
-  let Q=1-Math.pow(Nv, e);
-
-  if (Q <= 0 || Q >= 1){
-    alert(`Calculated Q is not within the acceptable range of 0 to 1. Please adjust the parameters accordingly.`)
-    return;
-  }
-  
-  RPM4=Math.pow(Et4/(Q*Ei4*Nb*fb4*t4),1/3);
-
-  document.getElementById("RPM4").value=RPM4;
-  
-  if(RPM4 < MinRPM || RPM4 > MaxRPM){
-  alert(`RPM is too high. Please change the parameters`)
-  return;
-  }                        
-
+  targetLabel2.innerText="Result = ";
+  document.getElementById("f2G").style.display = "block";
+  document.getElementById("t2G").style.display = "block";
+  document.getElementById("Et2G").style.display = "block";
+  f2.value = "";
+  time2.value = "";
+  tunit2.value = "s";
+  Etotal2.value = "";
+  Etunit2.value = "J";
 });
-
-buttonT.addEventListener("click", function(){
-
-  let Et5 = parseFloat(Etotal5.value);
-  let RPM5=parseFloat(RPerM5.value);
-
-  if (Eunit5.value ==="KJ") {
-    Et5=Et5*1000;
-  }
-  let Mac = Machine.value;
-  let wp5=2 * Math.PI *RPM5/ 60;
-  let MinDb, MaxDb, MinRPM, MaxRPM, Rp;
-  let Db=parseFloat(Dball.value);
-  let Dbu=Dbunit.value;
-
-
-  if (Dbu==="mm"){
-    CDb=Db/1000;
-  }
-  else if (Dbu==="cm"){
-    CDb=Db/100;
-  }
-  else {
-    CDb=Db;
-  }
-  Rb=CDb / 2;
-
-  Dv=parseFloat(Dvial.value);
-  let Dvu=Dvunit.value;
-  if (Dvu==="mm"){
-    Dv=Dv/1000;
-  }
-  else if (Dvu==="cm"){
-    Dv=Dv/100;
-  }
-  else {
-    Dv=Dv;
-  }
-  Rv=Dv / 2;
-
-  if (Mac==="PULVERISETTE 7 premium line"){
-    MinDb=0.0001;
-    MaxDb= 0.02;
-    MinRPM= 150;
-    MaxRPM= 1100;
-    Rp=0.07;
-    Dp=Rp*2000;
-    Dpu = "mm";
-
-  } else if (Mac==="PULVERISETTE 7 classic line"){
-    MinDb=0.0001;
-    MaxDb= 0.015;
-    MinRPM= 100;
-    MaxRPM= 800;
-    Rp=0.07;
-    Dp=Rp*2000;
-    Dpu = "mm";
-
-  } else if (Mac4==="PULVERISETTE 5/2 classic line"){
-    MinDb=0.0001;
-    MaxDb= 0.04;
-    MinRPM= 50;
-    MaxRPM= 400;
-    Rp=0.125;
-    Dp=Rp*2000;
-    Dpu = "mm";
-
-  } else {
-    MinDb=0;
-    MaxDb= 100000;
-    MinRPM= 0;
-    MaxRPM= 1000000;
-    Dp=parseFloat(Dplate.value);
-    Dpu=Dpunit.value; 
-  }
-
-  if (CDb < MinDb || CDb > MaxDb){
-    alert(`Please enter a ball diameter between ${MinDb*1000} and ${MaxDb*1000} mm.`)
-    return;}
   
-  else if(RPM5 < MinRPM || RPM5 > MaxRPM){
-  alert(`Please enter RPM between ${MinRPM} and ${MaxRPM}.`)
-  return;}
-
-  let Mb=parseFloat(Mball.value);
-  let Mbu=Mbunit.value;
-
-  if (Mbu==="mg"){Mb=Mb/1000000;}
-  else if (Mbu==="g"){Mb=Mb/1000;}
-  else {Mb=Mb;}
-
-  let i = Tratio.value;
-  let wv5=-i * wp5;
-   Vb5=Math.sqrt((wp5 * Rp)**2+ wv5**2 * (Rv - Rb)**2 * (1-2 * wv5 / wp5)) ;          
-   Vs5=Math.sqrt((wp5 * Rp)**2+ wv5**2 * (Rv - Rb)**2 + 2 * wp5 * wv5 * Rp * (Rv-Rb));
-  let Ei5=0.5 * Mb * (Vb5**2 - Vs5**2);
-
-  let fb5=K*(wp5-wv5)/(2*Math.PI);
-  /*let t4=parseFloat(time4.value);
-  let tu4=tunit4.value;
-  if (tu4==="m"){t4=t4*60;}
-  else {t4=t4;}*/
-
-  let Hv=parseFloat(Hvial.value);
-  let Hvu=Hvunit.value;
-  if (Hvu==="mm"){Hv=Hv/1000;}
-  else if (Hvu==="cm"){Hv=Hv/100;}
-  else {Hv=Hv;}
-  let Nb=parseFloat(Nball.value);
-
-  let Nbv=Math.PI * Dv**2 * Hv / 4 * CDb**(-3);   
-  let Nv=Nb/Nbv;                    
-  let Nbs=Math.PI * (Dv-CDb) * Hv / 3 * CDb**(-2);
-  let Ns=Nb/Nbs;
-
-  let e=Math.log(1-0.95)/Math.log(Nbs/Nbv);
-
-  let Q=1-Math.pow(Nv, e);
-
-  if (Q <= 0 || Q >= 1){
-    alert(`Calculated Q is not within the acceptable range of 0 to 1. Please adjust the parameters accordingly.`)
-    return;
-  }
-
-  t5=Et5/(Q*Ei5*Nb*fb5);
+document.getElementById('Target2').addEventListener('change', function() {
+  const selectedOption = this.value;
   
-  document.getElementById("t5").value=t5;                       
-
+  Ru2.disabled = false;
+  // Update label text based on selected option
+  switch (selectedOption) {
+    case 'Cumulative Energy(Et)':
+      targetLabel2.innerText = 'Et = ';
+      break;
+    case 'Frequency':
+      targetLabel2.innerText = 'F = ';
+      break;
+    case 'Time':
+      targetLabel2.innerText = 'Time = ';
+      break;
+    default:
+      targetLabel2.innerText = 'Result';
+      Ru2.disabled = true;
+      break;
+  }
 });

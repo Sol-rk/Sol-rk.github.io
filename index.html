@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>Ball-milling Calculator</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link href="style1.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -13,11 +13,12 @@
 
     <h1>Ball-milling Calculator</h1>
     <p>The calculator on this page is~~(description). </p>
+    <h2>Type1</h2>
 
     <div class="calculator">
       
     <div id="calc1">
-      <h2>Impact Energy(E<sub>i</sub>)</h2>
+      <h3>Impact Energy(E<sub>i</sub>)</h3>
     <p>This calculates the point impact energy after one collision.</p>     
       <label>
       Machine:
@@ -87,7 +88,7 @@
     
     </div>
     <div id="calc2">
-      <h2>Emprical filling degree(Q)</h2>
+      <h3>Emprical filling degree(Q)</h3>
 
       <label>
         Diameter of vial:<input type="number"  id=Dv1> 
@@ -125,7 +126,7 @@
     </div>
     
     <div id="calc3">
-      <h2>Cumulative energy(E<sub>t</sub>)</h2>
+      <h3>Cumulative energy(E<sub>t</sub>)</h3>
       <p>This calculates the cumulative energy of the milling process for time t.</p>
 
       <label>
@@ -146,7 +147,7 @@
     <div class=calculator>    
     
     <div id="calc4">
-      <h2>RPM</h2>
+      <h3>RPM</h3>
     <p>This calculates RPM~~ Please put every parameter in ~.</p>    
       <label>
         Total energy:<input type="number" id=Et4> 
@@ -237,7 +238,7 @@
       
     
     <div id="calc5">
-      <h2>Time(s)</h2>
+      <h3>Time(s)</h3>
     <p>This calculates Time~~ Please put every parameter in ~. </p>     
       <label>
         Total energy:<input type="number" id=Et5> 
@@ -324,10 +325,157 @@
       </label>
       </div>
       </div>
+
+    <h2>Type2</h2>
+    <p>This calculates R_MM400~.</p>
     
+    <div class=calculator>  
+    <div id="calc6">
+      <h3>Cumulative Energy E<sub>t</sub></h3>
+    <p></p>    
+      <label>
+        Frequency : <input type="number" id=f6> Hz
+      </label>
+      <label>
+      Diameter of vial : <input type="number" id=Dv6> 
+        <select id="Dvu6">
+          <option>mm</option>
+          <option>cm</option>
+          <option>m</option>         
+        </select>
+      </label>
+      
+      <label>
+       Mass of a ball : <input type="number" id=Mb6> 
+         <select id="Mbu6">
+           <option>mg</option>
+           <option>g</option>
+          <option>kg</option>         
+        </select>
+      </label>
+
+      <label>
+      <button id="buttonEi6">Ei</button> : <input type="number" id=Ei6> J
+      </label>
+      
+      <label>
+      Diameter of a ball : <input type="number"  id=Db6> 
+        <select id="Dbu6">
+          <option>mm</option>
+          <option>cm</option>
+          <option>m</option>         
+        </select>
+      </label>
+      
+      <label>
+      Height of vial : <input type="number" id=Hv6> 
+        <select id="Hvu6">
+          <option>mm</option>
+          <option>cm</option>
+          <option>m</option>         
+        </select>
+      </label>
+      <label>
+        Total number of balls : <input type="number"  id=Nb6>
+        </label>
+      
+      <label>
+        <button id="buttonQ6">Q</button> : <input type="number"  id=Q6>
+      </label>      
+
+
+      <label>
+        Time : <input type="number" id=t6> 
+          <select id="tu6">
+            <option>s</option>
+            <option>m</option>        
+          </select>
+         </label><br/>
+      <label>
+        <button id="buttonEt6">Et</button>
+        = <input type="text" id="Et6"> J 
+      </label>
+      </div>
+      
+    <div id="calc7">
+      <h3>Frequency(Hz) / Time(s)</h3>
+    <p>Here, you can calculate the required frequency to achieve the cumulative energy you desire, if you input time and vice versa.</p>
+      <label>
+        E<sub>t</sub> : <input type="number" id="Et7"> J
+      </label>
+      
+      <label>
+        <select id="target7">
+          <option>--Select parameter--</option>
+          <option>Frequency</option>
+          <option>Time</option>        
+        </select> : <input type="number" id=targetn7>
+        <select id="targetu7">
+          <option></option>
+          <option>Hz</option>
+          <option>s</option>        
+        </select>
+      </label>
+      
+      <label>
+      Diameter of vial : <input type="number" id=Dv7> 
+        <select id="Dvu7">
+          <option>mm</option>
+          <option>cm</option>
+          <option>m</option>         
+        </select>
+      </label>
+      
+      <label>
+       Mass of a ball : <input type="number" id=Mb7> 
+         <select id="Mbu7">
+           <option>mg</option>
+           <option>g</option>
+          <option>kg</option>         
+        </select>
+      </label>
+
+      <label>
+      Diameter of a ball : <input type="number"  id=Db7> 
+        <select id="Dbu7">
+          <option>mm</option>
+          <option>cm</option>
+          <option>m</option>         
+        </select>
+      </label>
+      
+      <label>
+      Height of vial : <input type="number" id=Hv7> 
+        <select id="Hvu7">
+          <option>mm</option>
+          <option>cm</option>
+          <option>m</option>         
+        </select>
+      </label> 
+
+      <label>
+        Total number of balls : <input type="number"  id=Nb7>
+        </label>
+      <label>
+        <button id="buttonCal7">Calculate</button>
+      <select id=Rtype>
+        <option></option>
+      <option>Frequency</option>
+      <option>Time</option> 
+      </select>
+        <input type="text" id=R7>
+      <select id="Ru7">
+        <option></option>
+        <option>Hz</option>
+        <option>s</option>        
+      </select>
+      </label>
+      </div>
+      </div>
 <hr>
 
-      
+    <li><a href="ver2.html">ver2.0</a></li> 
+    <li><a target="blank" href="https://www.lungerichlab.com/">Paper link</a></li>
     <li><a target="blank" href="https://www.lungerichlab.com/">Lungerich Group</a></li>
     <li><a target="blank" href="https://scholar.google.com/citations?user=SqZM0A4AAAAJ&hl=de">Google Scholar</a></li>
     
@@ -335,7 +483,7 @@
 </div>
 
   
-  <script src="script.js"></script>
+  <script src="js/script1.js"></script>
 </body>
 
 </html>

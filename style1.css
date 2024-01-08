@@ -1,0 +1,117 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 10px 10px 10px 10px;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+/* Calculator Styles */
+.calculator {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns of equal width */
+  grid-gap: 10px;
+  row-gap: 10px;
+  grid-template-rows: auto auto ; /* Auto size for rows */
+}
+
+#calc1 {
+  grid-column: 1 ; /* Span two columns */
+  grid-row: 1 / span 2; /* Span two rows */
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+
+#calc2{ grid-column: 2; /* Resets column positioning */
+  grid-row: 1; /* Resets row positioning */
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+#calc3 { grid-column: 2; /* Resets column positioning */
+  grid-row: 2; /* Resets row positioning */
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+#calc4{
+    grid-column: 1; 
+    grid-row: 1; 
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+  }
+
+#calc5 { 
+  grid-column: 2; 
+  grid-row: 1 ; 
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+#calc6 { 
+  grid-column: 1; 
+  grid-row: 1 ; 
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+#calc7 { 
+  grid-column: 2; 
+  grid-row: 1 ; 
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+
+hr {
+  border: none; /* Remove default border */
+  height: 2px; /* Set the height */
+  background-color: #000; /* Set the background color */
+  margin: 10px; /* Adjust margin as needed */
+}
+
+
+
+/* Form Styles */
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input
+{
+  width: 80px;
+  height: 20px;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+button {
+  padding: 8px 16px;
+  background-color: #01DF3A;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Adding transition for smooth color change */
+}
+
+/* Adding hover effect */
+button:hover {
+  background-color: #00FF40; /* Change the color slightly on hover */
+}
+
+select {
+  height: 33px; /* Set a specific height for consistency */
+}
