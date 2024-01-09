@@ -9,8 +9,6 @@ let Dvial1 = document.getElementById("Dv1");
 let Dvunit1 = document.getElementById("Dvu1");
 let Dvial2 = document.getElementById("Dv2");
 let Dvunit2 = document.getElementById("Dvu2");
-let Tratio1 = document.getElementById("i");
-let Ttype1 = document.getElementById("Tt1");
 let Hvial1 = document.getElementById("Hv1")
 let Hvunit1 = document.getElementById("Hvu1")
 let Hvial2 = document.getElementById("Hv2")
@@ -71,7 +69,7 @@ let K = 1;
 let Kc = 10;
 let MinDb, MaxDb, MinRPM, MaxRPM,RPM;
 let Mac1 = Machine1.value;
-let Ir, i;
+let i;
 let Et1,t1,Et2,t2,Q1,Q2,CDb, Ei1, Ei2;
 
 /*synchronization of Db and Dv*/
@@ -193,7 +191,7 @@ Target2.addEventListener("change", function() {
 
 Machine1.addEventListener("change", function() {
   updateDp();
-  updateI();
+
   if (Machine1.value === "Others") {
     Dpu1.disabled = false;
     Dp1.disabled = false;
@@ -204,21 +202,7 @@ Machine1.addEventListener("change", function() {
   }
 });
 
-Dplate1.addEventListener("input", function() {
-  updateI();
-});
-Dpunit1.addEventListener("change", function() {
-  updateI();
-  updateDp();
-});
-Dvial1.addEventListener('input', function() {
-  updateI();
-});
-Dvunit1.addEventListener('input', function() {
-  updateI();
-});
-Ttype1.addEventListener("change", updateI);
-/*machine dependent Dp update*/
+
 function updateDp() {
   
   let Mac1=Machine1.value; 
@@ -247,61 +231,6 @@ function updateDp() {
   Dplate1.value = Dp1;
   Dpunit1.value = Dpu1;
 
-
-}
-function updateI() {
-  let i;
-  let Mac1=Machine1.value; 
-
-
-  let Dv1 = parseFloat(Dvial1.value);
-  let Dvu1 = Dvunit1.value;
-  if (Dvu1 === "mm") { Dv1 = Dv1 / 1000; }
-  else if (Dvu1 === "cm") { Dv1 = Dv1 / 100; }
-  else { Dv1 = Dv1; }
-  let Rv1 = Dv1 / 2;
-
-  let Dp1 = parseFloat(Dplate1.value);
-  let Dpu1 = Dpunit1.value;
-  if (Dpu1 === "mm") { Dp1 = Dp1 / 1000; }
-  else if (Dpu1 === "cm") { Dp1 = Dp1 / 100; }
-  else { Dp1 = Dp1; }
-  let Rp1 = Dp1 / 2;
-
-  if (Mac1 === "PULVERISETTE 7 premium line") {
-    Ir = 2;
-
-  } else if (Mac1 === "PULVERISETTE 7 classic line") {
-    Ir = 2;
-  } else if (Mac1 === "PULVERISETTE 5/2 classic line") {
-    Ir = 2.19;
-  }
-  else if (Mac1 === "Others") {
-    Ir = parseFloat(Tratio1.value);
-  }
-  if (Ttype1.value === "I_critical") {
-    i = 1 + Math.sqrt(Rp1 / Rv1);
-  }
-  else if (Ttype1.value === "I_relative") {
-    i = Ir;
-  }
-  else if (Ttype1.value === "Others") {
-    i = parseFloat(Tratio1.value);
-  }
-  Tratio1.value = i;
-
-  if (Ttype1.value === "Others") {
-    Tratio1.disabled = false;
-  }
-  else {
-    Tratio1.disabled = true;
-    if (Mac1 === "Others") {
-      Tratio1.disabled = false;
-      if (Ttype1.value === "I_critical") {
-        Tratio1.disabled = true;
-      }
-    }
-  }
 }
 
 
@@ -309,22 +238,7 @@ function updateI() {
 let buttonCal1 = document.getElementById("Cal1");
 
 buttonCal1.addEventListener("click", function() {
-
   let Mac1=Machine1.value; 
-  RPM=parseFloat(RPerM1.value);
-  let Db1 = parseFloat(Dball1.value);
-  let Dbu1 = Dbunit1.value;
-  if (Dbu1 === "mm") { CDb = Db1 / 1000; }
-  else if (Dbu1 === "cm") { CDb = Db1 / 100; }
-  else { CDb = Db1; }
-  let Rb1 = CDb / 2;
-
-  Dv1 = parseFloat(Dvial1.value);
-  let Dvu1 = Dvunit1.value;
-  if (Dvu1 === "mm") { Dv1 = Dv1 / 1000; }
-  else if (Dvu1 === "cm") { Dv1 = Dv1 / 100; }
-  else { Dv1 = Dv1; }
-  let Rv1 = Dv1 / 2;
   /* fixed values by machine*/
   if (Mac1 === "PULVERISETTE 7 premium line") {
     MinDb = 0.0001;
@@ -350,8 +264,22 @@ buttonCal1.addEventListener("click", function() {
     MinRPM = 0;
     MaxRPM = 1000000;
   }
-  /* value warning*/
 
+  
+  RPM=parseFloat(RPerM1.value);
+  let Db1 = parseFloat(Dball1.value);
+  let Dbu1 = Dbunit1.value;
+  if (Dbu1 === "mm") { CDb = Db1 / 1000; }
+  else if (Dbu1 === "cm") { CDb = Db1 / 100; }
+  else { CDb = Db1; }
+  let Rb1 = CDb / 2;
+
+  Dv1 = parseFloat(Dvial1.value);
+  let Dvu1 = Dvunit1.value;
+  if (Dvu1 === "mm") { Dv1 = Dv1 / 1000; }
+  else if (Dvu1 === "cm") { Dv1 = Dv1 / 100; }
+  else { Dv1 = Dv1; }
+  let Rv1 = Dv1 / 2;
 
   let Dp1 = parseFloat(Dplate1.value);
   let Dpu1 = Dpunit1.value;
@@ -360,14 +288,13 @@ buttonCal1.addEventListener("click", function() {
   else { Dp1 = Dp1; }
   let Rp1 = Dp1 / 2;
 
+  i = 1 + Math.sqrt(Rp1 / Rv1);
+
   let Mb1 = parseFloat(Mball1.value);
   let Mbu1 = Mbunit1.value;
   if (Mbu1 === "mg") { Mb1 = Mb1 / 1000000; }
   else if (Mbu1 === "g") { Mb1 = Mb1 / 1000; }
   else { Mb1 = Mb1; }
-
-  let i = Tratio1.value;
-
 
   let Hv1 = parseFloat(Hvial1.value);
   let Hvu1 = Hvunit1.value;
@@ -548,8 +475,6 @@ buttonCl1.addEventListener("click", function() {
   Dpunit1.value = "mm"; // Replace with default value if available
   Dvial1.value = "";
   Dvunit1.value = "mm"; // Replace with default value if available
-  Tratio1.value = "";
-  Ttype1.value = ""; // Replace with default value if available
   Hvial1.value = "";
   Hvunit1.value = "mm"; // Replace with default value if available
   Dball1.value = "";
@@ -795,8 +720,8 @@ Save2.addEventListener('click', saveToExcel2);
 function saveToExcel1() {
   // Data to be saved
   const data = [
-    ['Machine', 'Effective diameter of main disk','unit','Diameter of vial','unit','Transmission ratio','Type','height of vial','unit', 'Diameter of a ball','unit','Mass of ball','unit','number of ball','RPM','time','unit','cumulative E','unit','impact E','unit','Q factor'],
-    [Machine1.value,Dplate1.value,Dpunit1.value,Dvial1.value,Dvunit1.value, Tratio1.value,Ttype1.value, Hvial1.value,Hvunit1.value,Dball1.value,Dbunit1.value,Mball1.value,Mbunit1.value,Nball1.value,RPerM1.value,time1.value,tunit1.value,Etotal1.value,Etunit1.value,Eimpact1.value,Eiu1.value,Qfactor1.value]
+    ['Machine', 'Effective diameter of main disk','unit','Diameter of vial','unit','Transmission ratio','height of vial','unit', 'Diameter of a ball','unit','Mass of ball','unit','number of ball','RPM','time','unit','cumulative E','unit','impact E','unit','Q factor'],
+    [Machine1.value,Dplate1.value,Dpunit1.value,Dvial1.value,Dvunit1.value, i,Hvial1.value,Hvunit1.value,Dball1.value,Dbunit1.value,Mball1.value,Mbunit1.value,Nball1.value,RPerM1.value,time1.value,tunit1.value,Etotal1.value,Etunit1.value,Eimpact1.value,Eiu1.value,Qfactor1.value]
   ];
 
   // Create a new workbook
