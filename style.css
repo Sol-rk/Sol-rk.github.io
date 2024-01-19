@@ -1,0 +1,204 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 10px 10px 10px 10px;
+  padding: 0;
+  background-color: #FFFFFF;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+.input {
+  padding: 0px 20px;
+}
+
+
+/* Calculator Styles */
+.calculator {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* Two columns of equal width */
+  grid-gap: 10px;
+  row-gap: 10px;
+  grid-template-rows: auto auto;
+  /* Auto size for rows */
+}
+#calc1 {
+  grid-column: 1;
+  /* Span two columns */
+  grid-row: 1;
+  /* Span two rows */
+  padding: 0px;
+  border: 4px solid #F6CEEC;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 250px;
+
+}
+
+#calc2 {
+  grid-column: 2;
+  /* Resets column positioning */
+  grid-row: 1;
+  /* Resets row positioning */
+  padding: 0px;
+  border: 4px solid #CEE3F6;
+  border-radius: 5px;
+  width: 100%;
+  min-width: 250px;
+  box-sizing: border-box;
+}
+
+.grid-item {
+  min-width: 250px; /* Adjust as needed */
+  /* Other styles */
+}
+
+
+#expl1 {
+
+  padding: 20px 20px;
+  border: 0px solid; 
+  border-radius: 0px;
+  border-color:#F6CEEC;
+  background-color:#F6CEEC;
+
+  h2 {
+    color: #FF00BF;
+    margin: 0px 0px 10px 0px;
+  }
+
+  p {
+    color: #B40486;
+    margin: 0px;
+  }
+}
+
+#expl2 {
+
+  padding: 20px 20px;
+  border: 0px solid; 
+  border-radius: 0px;
+  border-color:#CEE3F6;
+  background-color:#CEE3F6;
+  
+  h2 {
+    color: #0080FF;
+    margin: 0px 0px 10px 0px;
+  }
+  p {
+    color: #045FB4;
+    margin: 0px;
+  }
+}
+
+
+
+
+.hr3 {
+  border: none;
+  /* Remove default border */
+  height: 3px;
+  /* Set the height */
+  background-color: #000;
+  /* Set the background color */
+  margin: 10px;
+  /* Adjust margin as needed */
+}
+.hr1 {
+  border: none;
+  /* Remove default border */
+  height: 3px;
+  /* Set the height */
+  background-color: #F6CEEC;
+  /* Set the background color */
+  margin: 10px 0px 
+  /* Adjust margin as needed */
+}
+.hr2 {
+  border: none;
+  /* Remove default border */
+  height: 3px;
+  /* Set the height */
+  background-color: #CEE3F6;
+  /* Set the background color */
+  margin: 10px 0px 
+  /* Adjust margin as needed */
+}
+
+/* Form Styles */
+
+
+
+.cl-button,
+.cal-button,
+.s-button
+{
+  padding: 8px 16px;
+  
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  outline: none;
+  display: inline-block;
+  margin: 10px 0px 10px 10px;
+}
+
+#Cal1,#Clear1,#Save1,#add1,#Remove1 {
+  background-color: #F6CEEC;
+}
+#Cal2,#Clear2,#Save2,#add2,#Remove2 {
+  background-color: #CEE3F6;
+}
+
+#Cal1:hover,
+#Cal2:hover {
+  background-color: #01DF01;
+  /* Change the color slightly on hover */
+}
+#Clear1:hover,
+#Clear2:hover {
+  background-color: red;
+  /* Change the color slightly on hover */
+}
+#Save1:hover,
+#add1:hover
+{
+  box-shadow: 0 0 10px 5px #F781D8;
+  /* Change the color slightly on hover */
+}
+#Save2:hover,
+#add2:hover
+{
+  box-shadow: 0 0 10px 5px #A9D0F5;
+  /* Change the color slightly on hover */
+}
+#Remove1:hover,
+#Remove2:hover
+{
+  box-shadow: 0 0 10px 5px lightred;
+}
+
+
+select,input {
+  height: 33px;
+  margin: 10px 0px 10px 5px;
+  border-width: 1px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  /* Set a specific height for consistency */
+}
+input {
+  width: 80px;
+
+}
+
