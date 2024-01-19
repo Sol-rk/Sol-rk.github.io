@@ -150,18 +150,16 @@ p {
   transition: background-color 0.3s;
   outline: none;
   display: inline-block;
-  margin: 10px 0px 0px 10px;
+  margin: 10px 0px 10px 10px;
 }
 
-#Cal1,#Clear1,#Save1 {
+#Cal1,#Clear1,#Save1,#add1,#Remove1 {
   background-color: #F6CEEC;
 }
-#Cal2,#Clear2,#Save2 {
+#Cal2,#Clear2,#Save2,#add2,#Remove2 {
   background-color: #CEE3F6;
 }
-#Save1,#Save2 {
-  float: right;
-  }
+
 #Cal1:hover,
 #Cal2:hover {
   background-color: #01DF01;
@@ -172,15 +170,22 @@ p {
   background-color: red;
   /* Change the color slightly on hover */
 }
-#Save1:hover
+#Save1:hover,
+#add1:hover
 {
   box-shadow: 0 0 10px 5px #F781D8;
   /* Change the color slightly on hover */
 }
-#Save2:hover
+#Save2:hover,
+#add2:hover
 {
   box-shadow: 0 0 10px 5px #A9D0F5;
   /* Change the color slightly on hover */
+}
+#Remove1:hover,
+#Remove2:hover
+{
+  box-shadow: 0 0 10px 5px lightred;
 }
 
 

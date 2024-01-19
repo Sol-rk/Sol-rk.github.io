@@ -52,10 +52,29 @@ let Eiu2=document.getElementById("Eiu2");
 let Qfactor1 = document.getElementById("Qfactor1");
 let Qfactor2 = document.getElementById("Qfactor2");
 
-Ru2.disabled = true;
+let buttonCal1 = document.getElementById("Cal1");
+let buttonCl1 = document.getElementById("Clear1");
+let buttonCal2 = document.getElementById("Cal2");
+let buttonCl2 = document.getElementById("Clear2");
+
+let cur1 = document.getElementById("cur1");
+let add1 = document.getElementById("add1");
+let tot1 = document.getElementById("tot1");
+let Remove1 = document.getElementById("Remove1");
+
+let cur2 = document.getElementById("cur2");
+let add2 = document.getElementById("add2");
+let tot2 = document.getElementById("tot2");
+let Remove2 = document.getElementById("Remove2");
+
+let Save1 = document.getElementById('Save1'); 
+let Save2 = document.getElementById('Save2');
+
+
+R1.disabled = true;
 Ru1.disabled = true;
 R2.disabled = true;
-R1.disabled = true;
+Ru2.disabled = true;
 
 Eimpact1.disabled = true;
 Eimpact2.disabled = true;
@@ -72,8 +91,130 @@ let Mac1 = Machine1.value;
 let i;
 let Et1,t1,Et2,t2,Q1,Q2,CDb, Ei1, Ei2;
 
+const header1 = 
+  ['Machine', 'Effective diameter of main disk','unit','Diameter of vial','unit','Transmission ratio','height of vial','unit', 'Diameter of a ball','unit','Mass of ball','unit','number of ball','RPM','time','unit','cumulative E','unit','impact E','unit','Q factor'];
+
+const header2 =['Diameter of vial','unit','height of vial','unit', 'Diameter of a ball','unit','Mass of ball','unit','number of ball','Frequency','unit','time','unit','cumulative E','unit','impact E','unit','Q factor'];
+
+let data1=[header1];
+let data2=[header2];
+
 /*synchronization of Db and Dv*/
 
+function updateDp() {
+
+  let Mac1=Machine1.value; 
+  let Dpu1 = Dpunit1.value;
+  let Dp1 = parseFloat(Dplate1.value);
+
+  if (Mac1 === "PULVERISETTE 7 premium line") {
+    Rp = 0.07;
+    Dp1 = Rp * 2000;
+    Dpu1 = "mm";
+  }
+  else if (Mac1 === "PULVERISETTE 7 classic line") {
+    Rp = 0.07;
+    Dp1 = Rp * 2000;
+    Dpu1 = "mm";
+  }
+  else if (Mac1 === "PULVERISETTE 5/2 classic line") {
+    Rp = 0.125;
+    Dp1 = Rp * 2000;
+    Dpu1 = "mm";
+  }
+  else {
+    Dp1 = parseFloat(Dplate1.value);
+    Dpu1 = Dpunit1.value;
+  }
+  Dplate1.value = Dp1;
+  Dpunit1.value = Dpu1;
+
+}
+function Record1() {
+
+  const record = [Machine1.value,Dplate1.value,Dpunit1.value,Dvial1.value,Dvunit1.value, i,Hvial1.value,Hvunit1.value,Dball1.value,Dbunit1.value,Mball1.value,Mbunit1.value,Nball1.value,RPerM1.value,time1.value,tunit1.value,Etotal1.value,Etunit1.value,Eimpact1.value,Eiu1.value,Qfactor1.value];
+
+  data1.push(record);
+}
+function saveToExcel1() {
+
+  if (parseInt(tot1.textContent)===0){
+   data=[header1,[Machine1.value, Dplate1.value,Dpunit1.value , Dvial1.value,Dvunit1.value , Hvial1.value,Hvunit1.value , Dball1.value,Dbunit1.value,Mball1.value,Mbunit1.value,Nball1.value ,RPerM1.value , time1.value,tunit1.value ,Etotal1.value,Etunit1.value,Eimpact1.value,Eiu1.value,Qfactor1.value]];}
+
+
+  // Create a new workbook
+  const wb = XLSX.utils.book_new();
+  const ws = XLSX.utils.aoa_to_sheet(data);
+
+  // Add the worksheet to the workbook
+  XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+  // Convert the workbook to a binary XLSX file and save it
+  const wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'binary' });
+  function s2ab(s) {
+    const buf = new ArrayBuffer(s.length);
+    const view = new Uint8Array(buf);
+    for (let i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xff;
+    return buf;
+  }
+  saveAs(
+    new Blob([s2ab(wbout)], { type: 'application/octet-stream' }),
+    'ball-milling-data.xlsx'
+  );
+}
+function Record2(){
+const record = [Dvial2.value,Dvunit2.value,Hvial2.value,Hvunit2.value,Dball2.value,Dbunit2.value,Mball2.value,Mbunit2.value,Nball2.value,f2.value,fu2.value,time2.value,tunit2.value,Etotal2.value,Etunit2.value,Eimpact2.value,Eiu2.value,Qfactor2.value];
+
+  data2.push(record); 
+}
+function saveToExcel2() {
+    if (parseInt(tot2.textContent)===0){
+    data=[header1,[Dvial2.value,Dvunit2.value,Hvial2.value,Hvunit2.value,Dball2.value,Dbunit2.value,Mball2.value,Mbunit2.value,Nball2.value,f2.value,fu2.value,time2.value,tunit2.value,Etotal2.value,Etunit2.value,Eimpact2.value,Eiu2.value,Qfactor2.value]]}
+  else { data=data2;}
+  // Create a new workbook
+  const wb = XLSX.utils.book_new();
+  const ws = XLSX.utils.aoa_to_sheet(data);
+
+  // Add the worksheet to the workbook
+  XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+  // Convert the workbook to a binary XLSX file and save it
+  const wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'binary' });
+  function s2ab(s) {
+    const buf = new ArrayBuffer(s.length);
+    const view = new Uint8Array(buf);
+    for (let i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xff;
+    return buf;
+  }
+  saveAs(
+    new Blob([s2ab(wbout)], { type: 'application/octet-stream' }),
+    'ball-milling-data.xlsx'
+  );
+}
+
+
+
+Target1.addEventListener("change", function(){
+  const selectedOption = this.value;
+
+  Ru1.disabled = false;
+
+  switch (selectedOption) {
+  case 'Cumulative Energy(Et)':
+    targetLabel1.innerHTML = 'E<sub>t</sub> = ';
+    break;
+  case 'RPM':
+    targetLabel1.innerHTML = 'RPM = ';
+    break;
+  case 'Time':
+    targetLabel1.innerHTML = 'Time = ';
+    break;
+  default:
+    targetLabel1.innerHTML = 'Result = ';
+    Ru1.disabled = true;
+    break;
+}
+});
 
 Target1.addEventListener("change", function() {
   Qfactor1.value = "";
@@ -131,63 +272,8 @@ Target1.addEventListener("change", function() {
      document.getElementById("RPM1G").style.display = "block";
     document.getElementById("t1G").style.display = "block";
     document.getElementById("Et1G").style.display = "none";
-  }
+  } 
 });
-
-Target2.addEventListener("change", function() {
-  Qfactor2.value = "";
-  Eimpact2.value = "";
-  if (Target2.value === 'Frequency') {
-    Ru2.value='Hz';
-    R2.value='';
-    for (let option of Ru2.options) {
-      if (option.value !== 'Hz') {
-        option.style.display = 'none';
-      }
-      else { option.style.display = 'block'; }
-    }
-    document.getElementById("f2G").style.display = "none";
-    document.getElementById("t2G").style.display = "block";
-    document.getElementById("Et2G").style.display = "block";
-  }
-  else if (Target2.value === 'Time') {
-    Ru2.value='s';
-    R2.value='';
-    for (let option of Ru2.options) {
-      if (option.value !== 's' && option.value !== 'm') {
-        option.style.display = 'none';
-      }
-      else { option.style.display = 'block'; }
-    }
-    document.getElementById("f2G").style.display = "block";
-    document.getElementById("t2G").style.display = "none";
-    document.getElementById("Et2G").style.display = "block";
-  }
-    else if (Target2.value === '--Select a parameter--') {
-      Ru2.value='';
-      R2.value='';
-      for (let option of Ru2.options) {
-    option.style.display = 'none';
-        }
-      document.getElementById("f2G").style.display = "block";
-      document.getElementById("t2G").style.display = "block";
-      document.getElementById("Et2G").style.display = "block";
-    }
-  else {
-    Ru2.value='J';
-    R2.value='';
-    for (let option of Ru2.options) {
-      if (option.value !== 'J' && option.value !== 'KJ') {
-        option.style.display = 'none';
-      }
-      else { option.style.display = 'block'; }
-    }
-    document.getElementById("f2G").style.display = "block";
-    document.getElementById("t2G").style.display = "block";
-    document.getElementById("Et2G").style.display = "none";
-  }
-});
-
 
 Machine1.addEventListener("change", function() {
   updateDp();
@@ -201,42 +287,6 @@ Machine1.addEventListener("change", function() {
     Dp1.disabled = true;
   }
 });
-
-
-function updateDp() {
-  
-  let Mac1=Machine1.value; 
-  let Dpu1 = Dpunit1.value;
-  let Dp1 = parseFloat(Dplate1.value);
-
-  if (Mac1 === "PULVERISETTE 7 premium line") {
-    Rp = 0.07;
-    Dp1 = Rp * 2000;
-    Dpu1 = "mm";
-  }
-  else if (Mac1 === "PULVERISETTE 7 classic line") {
-    Rp = 0.07;
-    Dp1 = Rp * 2000;
-    Dpu1 = "mm";
-  }
-  else if (Mac1 === "PULVERISETTE 5/2 classic line") {
-    Rp = 0.125;
-    Dp1 = Rp * 2000;
-    Dpu1 = "mm";
-  }
-  else {
-    Dp1 = parseFloat(Dplate1.value);
-    Dpu1 = Dpunit1.value;
-  }
-  Dplate1.value = Dp1;
-  Dpunit1.value = Dpu1;
-
-}
-
-
-/* from here we need to calculate something..*/
-let buttonCal1 = document.getElementById("Cal1");
-
 buttonCal1.addEventListener("click", function() {
   let Mac1=Machine1.value; 
   /* fixed values by machine*/
@@ -420,9 +470,10 @@ buttonCal1.addEventListener("click", function() {
     return;
   }
 
+  if (cur1.textContent = tot1.textContent){
+  cur1.textContent= parseInt(cur1.textContent) +1;}
 
 });
-
 Ru1.addEventListener("change",function(){
     if (Ru1.value ==="m") {
       R1.value=t1/60;
@@ -443,31 +494,10 @@ Ru1.addEventListener("change",function(){
       Etotal1.value=R1.value;
       Etunit1.value=Ru1.value;}
   });
-  
-document.getElementById('Target1').addEventListener('change', function() {
-const selectedOption = this.value;
-
-Ru1.disabled = false;
-// Update label text based on selected option
-switch (selectedOption) {
-  case 'Cumulative Energy(Et)':
-    targetLabel1.innerHTML = 'E<sub>t</sub> = ';
-    break;
-  case 'RPM':
-    targetLabel1.innerHTML = 'RPM = ';
-    break;
-  case 'Time':
-    targetLabel1.innerHTML = 'Time = ';
-    break;
-  default:
-    targetLabel1.innerHTML = 'Result = ';
-    Ru1.disabled = true;
-    break;
-}
+Eiu1.addEventListener("change",function(){
+  if (Eiu1.value==="KJ"){Eimpact1.value= Ei1/1000;}
+  else {Eimpact1.value=Ei1;}
 });
-
-let buttonCl1 = document.getElementById("Clear1");
-
 buttonCl1.addEventListener("click", function() {
   Target1.value = "--Select a parameter--"
   Machine1.value = "--Select a machine--"; // Replace with default value if available
@@ -508,7 +538,97 @@ buttonCl1.addEventListener("click", function() {
 
 
 
-let buttonCal2 = document.getElementById("Cal2");
+add1.addEventListener('click', function() {
+  if (cur1.textContent !== tot1.textContent){
+    tot1.textContent = cur1.textContent;
+    Record1();
+    }
+});
+Remove1.addEventListener('click', function() {
+  cur1.textContent = 0;
+  tot1.textContent = 0;
+  data1=header1;});
+
+
+Save1.addEventListener('click', saveToExcel1);
+
+
+
+
+
+Target2.addEventListener("change", function() {
+  Qfactor2.value = "";
+  Eimpact2.value = "";
+  if (Target2.value === 'Frequency') {
+    Ru2.value='Hz';
+    R2.value='';
+    for (let option of Ru2.options) {
+      if (option.value !== 'Hz') {
+        option.style.display = 'none';
+      }
+      else { option.style.display = 'block'; }
+    }
+    document.getElementById("f2G").style.display = "none";
+    document.getElementById("t2G").style.display = "block";
+    document.getElementById("Et2G").style.display = "block";
+  }
+  else if (Target2.value === 'Time') {
+    Ru2.value='s';
+    R2.value='';
+    for (let option of Ru2.options) {
+      if (option.value !== 's' && option.value !== 'm') {
+        option.style.display = 'none';
+      }
+      else { option.style.display = 'block'; }
+    }
+    document.getElementById("f2G").style.display = "block";
+    document.getElementById("t2G").style.display = "none";
+    document.getElementById("Et2G").style.display = "block";
+  }
+    else if (Target2.value === '--Select a parameter--') {
+      Ru2.value='';
+      R2.value='';
+      for (let option of Ru2.options) {
+    option.style.display = 'none';
+        }
+      document.getElementById("f2G").style.display = "block";
+      document.getElementById("t2G").style.display = "block";
+      document.getElementById("Et2G").style.display = "block";
+    }
+  else {
+    Ru2.value='J';
+    R2.value='';
+    for (let option of Ru2.options) {
+      if (option.value !== 'J' && option.value !== 'KJ') {
+        option.style.display = 'none';
+      }
+      else { option.style.display = 'block'; }
+    }
+    document.getElementById("f2G").style.display = "block";
+    document.getElementById("t2G").style.display = "block";
+    document.getElementById("Et2G").style.display = "none";
+  }
+
+  const selectedOption = this.value;
+
+  Ru2.disabled = false;
+  // Update label text based on selected option
+  switch (selectedOption) {
+    case 'Cumulative Energy(Et)':
+      targetLabel2.innerHTML = 'E<sub>t</sub> = ';
+      break;
+    case 'Frequency':
+      targetLabel2.innerHTML = 'F = ';
+      break;
+    case 'Time':
+      targetLabel2.innerHTML = 'Time = ';
+      break;
+    default:
+      targetLabel2.innerHTML = 'Result = ';
+      Ru2.disabled = true;
+      break;
+  }
+});
 buttonCal2.addEventListener("click", function() {
 
   let Dv2 = parseFloat(Dvial2.value);
@@ -621,8 +741,11 @@ buttonCal2.addEventListener("click", function() {
   if (Q2 <= 0 || Q2 >= 1) {
     alert(`Calculated Q is not within the acceptable range of 0 to 1. Please adjust the parameters accordingly.`)
     return;}
-});
 
+  if (cur2.textContent === tot2.textContent){
+    cur2.textContent = parseInt(cur2.textContent)+1;}
+  
+});
 Ru2.addEventListener("change",function(){
   if (Ru2.value ==="m") { 
     R2.value=t2/60; 
@@ -643,19 +766,10 @@ Ru2.addEventListener("change",function(){
   Etunit2.value=Ru2.value;}
   
 });
-
-Eiu1.addEventListener("change",function(){
-  if (Eiu1.value==="KJ"){Eimpact1.value= Ei1/1000;}
-  else {Eimpact1.value=Ei1;}
-});
 Eiu2.addEventListener("change",function(){
   if (Eiu2.value==="KJ"){Eimpact2.value= Ei2/1000;}
   else {Eimpact2.value=Ei2;}
 });
-
-
-let buttonCl2 = document.getElementById("Clear2");
-
 buttonCl2.addEventListener("click", function() {
   Target2.value = "--Select a parameter--"
   Dvial2.value = "";
@@ -690,84 +804,30 @@ buttonCl2.addEventListener("click", function() {
   
 });
   
-document.getElementById('Target2').addEventListener('change', function() {
-  const selectedOption = this.value;
-  
-  Ru2.disabled = false;
-  // Update label text based on selected option
-  switch (selectedOption) {
-    case 'Cumulative Energy(Et)':
-      targetLabel2.innerHTML = 'E<sub>t</sub> = ';
-      break;
-    case 'Frequency':
-      targetLabel2.innerHTML = 'F = ';
-      break;
-    case 'Time':
-      targetLabel2.innerHTML = 'Time = ';
-      break;
-    default:
-      targetLabel2.innerHTML = 'Result = ';
-      Ru2.disabled = true;
-      break;
-  }
+
+
+add2.addEventListener('click', function() {
+  if (cur2.textContent !== tot2.textContent){
+    tot2.textContent = cur2.textContent;
+    Record2();
+    }
+});
+Remove2.addEventListener('click', function() {
+  cur2.textContent = 0;
+  tot2.textContent = 0;
+
+  data2 =header2;
 });
 
-const Save1 = document.getElementById('Save1'); // Replace 'saveButton' with your button's ID
-Save1.addEventListener('click', saveToExcel1);
-const Save2 = document.getElementById('Save2'); // Replace 'saveButton' with your button's ID
+
 Save2.addEventListener('click', saveToExcel2);
 
-function saveToExcel1() {
-  // Data to be saved
-  const data = [
-    ['Machine', 'Effective diameter of main disk','unit','Diameter of vial','unit','Transmission ratio','height of vial','unit', 'Diameter of a ball','unit','Mass of ball','unit','number of ball','RPM','time','unit','cumulative E','unit','impact E','unit','Q factor'],
-    [Machine1.value,Dplate1.value,Dpunit1.value,Dvial1.value,Dvunit1.value, i,Hvial1.value,Hvunit1.value,Dball1.value,Dbunit1.value,Mball1.value,Mbunit1.value,Nball1.value,RPerM1.value,time1.value,tunit1.value,Etotal1.value,Etunit1.value,Eimpact1.value,Eiu1.value,Qfactor1.value]
-  ];
 
-  // Create a new workbook
-  const wb = XLSX.utils.book_new();
-  const ws = XLSX.utils.aoa_to_sheet(data);
 
-  // Add the worksheet to the workbook
-  XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
 
-  // Convert the workbook to a binary XLSX file and save it
-  const wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'binary' });
-  function s2ab(s) {
-    const buf = new ArrayBuffer(s.length);
-    const view = new Uint8Array(buf);
-    for (let i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xff;
-    return buf;
-  }
-  saveAs(
-    new Blob([s2ab(wbout)], { type: 'application/octet-stream' }),
-    'ball-milling-data.xlsx'
-  );
-}
-function saveToExcel2() {
-  // Data to be saved
-  const data = [
-    ['Diameter of vial','unit','height of vial','unit', 'Diameter of a ball','unit','Mass of ball','unit','number of ball','Frequency','unit','time','unit','cumulative E','unit','impact E','unit','Q factor'],
-    [Dvial2.value,Dvunit2.value,Hvial2.value,Hvunit2.value,Dball2.value,Dbunit2.value,Mball2.value,Mbunit2.value,Nball2.value,f2.value,fu2.value,time2.value,tunit2.value,Etotal2.value,Etunit2.value,Eimpact2.value,Eiu2.value,Qfactor2.value]
-  ];
 
-  // Create a new workbook
-  const wb = XLSX.utils.book_new();
-  const ws = XLSX.utils.aoa_to_sheet(data);
 
-  // Add the worksheet to the workbook
-  XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
 
-  // Convert the workbook to a binary XLSX file and save it
-  const wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'binary' });
-  function s2ab(s) {
-    const buf = new ArrayBuffer(s.length);
-    const view = new Uint8Array(buf);
-    for (let i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xff;
-    return buf;
-  }
-  saveAs(
-    new Blob([s2ab(wbout)], { type: 'application/octet-stream' }),
-    'ball-milling-data.xlsx'
-  );
-}
+
+
+
