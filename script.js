@@ -547,7 +547,7 @@ add1.addEventListener('click', function() {
 Remove1.addEventListener('click', function() {
   cur1.textContent = 0;
   tot1.textContent = 0;
-  data1=header1;});
+  data1=[header1];});
 
 
 Save1.addEventListener('click', saveToExcel1);
@@ -816,7 +816,7 @@ Remove2.addEventListener('click', function() {
   cur2.textContent = 0;
   tot2.textContent = 0;
 
-  data2 =header2;
+  data2 =[header2];
 });
 
 
