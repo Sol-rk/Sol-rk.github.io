@@ -169,7 +169,7 @@ const record = [Dvial2.value,Dvunit2.value,Hvial2.value,Hvunit2.value,Dball2.val
 }
 function saveToExcel2() {
     if (parseInt(tot2.textContent)===0){
-    data=[header1,[Dvial2.value,Dvunit2.value,Hvial2.value,Hvunit2.value,Dball2.value,Dbunit2.value,Mball2.value,Mbunit2.value,Nball2.value,f2.value,fu2.value,time2.value,tunit2.value,Etotal2.value,Etunit2.value,Eimpact2.value,Eiu2.value,Qfactor2.value]]}
+    data=[header2,[Dvial2.value,Dvunit2.value,Hvial2.value,Hvunit2.value,Dball2.value,Dbunit2.value,Mball2.value,Mbunit2.value,Nball2.value,f2.value,fu2.value,time2.value,tunit2.value,Etotal2.value,Etunit2.value,Eimpact2.value,Eiu2.value,Qfactor2.value]];}
   else { data=data2;}
   // Create a new workbook
   const wb = XLSX.utils.book_new();
