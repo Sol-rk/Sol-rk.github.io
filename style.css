@@ -17,7 +17,13 @@ p {
 .input {
   padding: 0px 20px;
 }
-
+.button{
+  font-size: 14px;
+  }
+.number{
+  font-size: 14px;
+  color: #FF00BF
+}
 
 /* Calculator Styles */
 .calculator {
