@@ -191,7 +191,7 @@ p {
 #Remove1:hover,
 #Remove2:hover
 {
-  box-shadow: 0 0 10px 5px lightred;
+  background-color: red;
 }
 
 
