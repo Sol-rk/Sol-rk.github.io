@@ -140,7 +140,7 @@ function saveToExcel1() {
 
   if (parseInt(tot1.textContent)===0){
    data=[header1,[Machine1.value, Dplate1.value,Dpunit1.value , Dvial1.value,Dvunit1.value , Hvial1.value,Hvunit1.value , Dball1.value,Dbunit1.value,Mball1.value,Mbunit1.value,Nball1.value ,RPerM1.value , time1.value,tunit1.value ,Etotal1.value,Etunit1.value,Eimpact1.value,Eiu1.value,Qfactor1.value]];}
-
+  else { data=data1;}
 
   // Create a new workbook
   const wb = XLSX.utils.book_new();
