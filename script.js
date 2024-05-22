@@ -201,8 +201,8 @@ Target1.addEventListener("change", function(){
   Ru1.disabled = false;
 
   switch (selectedOption) {
-  case 'Cumulative Energy(Et)':
-    targetLabel1.innerHTML = 'E<sub>t</sub> = ';
+  case 'Cumulative Energy(Etotal)':
+    targetLabel1.innerHTML = 'E<sub>total</sub> = ';
     break;
   case 'RPM':
     targetLabel1.innerHTML = 'RPM = ';
@@ -232,6 +232,9 @@ Target1.addEventListener("change", function() {
     document.getElementById("RPM1G").style.display = "none"
     document.getElementById("t1G").style.display = "block";
     document.getElementById("Et1G").style.display = "block";
+    document.getElementById("RPM1GB").style.display = "none"
+    document.getElementById("t1GB").style.display = "block";
+    document.getElementById("Et1GB").style.display = "block";
 
   }
     
@@ -247,6 +250,9 @@ Target1.addEventListener("change", function() {
     document.getElementById("RPM1G").style.display = "block";
     document.getElementById("t1G").style.display = "none";
     document.getElementById("Et1G").style.display = "block";
+    document.getElementById("RPM1GB").style.display = "block";
+    document.getElementById("t1GB").style.display = "none";
+    document.getElementById("Et1GB").style.display = "block";
     
   }
 
@@ -257,8 +263,11 @@ Target1.addEventListener("change", function() {
    option.style.display = 'none';
         }
     document.getElementById("RPM1G").style.display = "block";
-    document.getElementById("t1G").style.display = "block";
+    document.getElementById("t1G").style.Bdisplay = "block";
     document.getElementById("Et1G").style.display = "block";
+    document.getElementById("RPM1GB").style.display = "block";
+    document.getElementById("t1GB").style.display = "block";
+    document.getElementById("Et1GB").style.display = "block";
     
     }
   else {
@@ -273,6 +282,10 @@ Target1.addEventListener("change", function() {
      document.getElementById("RPM1G").style.display = "block";
     document.getElementById("t1G").style.display = "block";
     document.getElementById("Et1G").style.display = "none";
+     document.getElementById("RPM1GB").style.display = "block";
+    document.getElementById("t1GB").style.display = "block";
+    document.getElementById("Et1GB").style.display = "none";
+    
   } 
 });
 
@@ -529,6 +542,10 @@ buttonCl1.addEventListener("click", function() {
   document.getElementById("RPM1G").style.display = "block";
   document.getElementById("t1G").style.display = "block";
   document.getElementById("Et1G").style.display = "block";
+  document.getElementById("RPM1GB").style.display = "block";
+  document.getElementById("t1GB").style.display = "block";
+  document.getElementById("Et1GB").style.display = "block";
+  
   RPerM1.value = "";
   time1.value = ""; 
   tunit1.value = "s";
@@ -572,6 +589,9 @@ Target2.addEventListener("change", function() {
     document.getElementById("f2G").style.display = "none";
     document.getElementById("t2G").style.display = "block";
     document.getElementById("Et2G").style.display = "block";
+    document.getElementById("f2GB").style.display = "none";
+    document.getElementById("t2GB").style.display = "block";
+    document.getElementById("Et2GB").style.display = "block";
   }
   else if (Target2.value === 'Time') {
     Ru2.value='s';
@@ -585,6 +605,9 @@ Target2.addEventListener("change", function() {
     document.getElementById("f2G").style.display = "block";
     document.getElementById("t2G").style.display = "none";
     document.getElementById("Et2G").style.display = "block";
+    document.getElementById("f2GB").style.display = "block";
+    document.getElementById("t2GB").style.display = "none";
+    document.getElementById("Et2GB").style.display = "block";
   }
     else if (Target2.value === '--Select a parameter--') {
       Ru2.value='';
@@ -595,6 +618,9 @@ Target2.addEventListener("change", function() {
       document.getElementById("f2G").style.display = "block";
       document.getElementById("t2G").style.display = "block";
       document.getElementById("Et2G").style.display = "block";
+      document.getElementById("f2GB").style.display = "block";
+      document.getElementById("t2GB").style.display = "block";
+      document.getElementById("Et2GB").style.display = "block";
     }
   else {
     Ru2.value='J';
@@ -608,6 +634,10 @@ Target2.addEventListener("change", function() {
     document.getElementById("f2G").style.display = "block";
     document.getElementById("t2G").style.display = "block";
     document.getElementById("Et2G").style.display = "none";
+    document.getElementById("f2GB").style.display = "block";
+    document.getElementById("t2GB").style.display = "block";
+    document.getElementById("Et2GB").style.display = "none";
+    
   }
 
   const selectedOption = this.value;
@@ -615,11 +645,11 @@ Target2.addEventListener("change", function() {
   Ru2.disabled = false;
   // Update label text based on selected option
   switch (selectedOption) {
-    case 'Cumulative Energy(Et)':
-      targetLabel2.innerHTML = 'E<sub>t</sub> = ';
+    case 'Cumulative Energy(Etotal)':
+      targetLabel2.innerHTML = 'E<sub>total</sub> = ';
       break;
     case 'Frequency':
-      targetLabel2.innerHTML = 'F = ';
+      targetLabel2.innerHTML = 'Frequency = ';
       break;
     case 'Time':
       targetLabel2.innerHTML = 'Time = ';
