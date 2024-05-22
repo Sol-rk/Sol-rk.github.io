@@ -14,313 +14,520 @@
   <div id="wrapper">
 
     <h1>Ball-milling Calculator</h1>
-    <p class="description">The calculator on this page is~~(description).</p>
-    <p class="button"><strong>Clear</strong>: Clear the parameters and results.<br>
-      <strong>Calculate</strong>: Perform the calculation to get the result, Ei, and calculate the filling factor Q.<br>
-      <strong>Add</strong>: Add the current parameters and results to a new row in the data table.<br>
-      <strong>Save</strong>: Save the data table as an Excel file.<br>
-      <strong>Remove</strong>: Remove all the data that was added, clearing the data table.
+    <p class="description">A general calculation method is presented in XXX for traversing synthetic protocols derived
+      from mixer or planetary ball mills; finding (1) the point impact energy E<sub>impact</sub> of a single collision
+      between the ball and the molecules, and (2) the cumulative energy E<sub>total</sub>, which is transferred to the
+      reaction mixture during the whole milling process. Similarly, experimentally relevant parameters such as RPM and
+      time can be determined when the cumulative energy E<sub>total</sub> is known.
     </p>
-    <p class="number"> ** The number on the right side of Calculate button shows the current calculation number. It
-      increases when the previous calculation is added.The number on the right side of Add button shows the number of
-      calculation added in data table.<br>
-      ** If you don't add anything and click save, the current calculation will be saved.</p>
+    <p>**Button discription</p>
+    <p class="button"><strong>Clear</strong>: Reset calculation parameters.<br>
+      <strong>Calculate</strong>: Execute the computation to obtain set outputs. <br>
+      <strong>Add</strong>: Append the current parameters and results to a new row within the data table.<br>
+      <strong>Save</strong>: Export the data table as an Excel file, including any recent additions.<br>
+      <strong>Remove</strong>: Erase all previously added data, opening a new data table.
+    </p>
 
 
 
+    <!--first calculator introduction-->
+    <div class="container" id="intro1">
 
-    <div class="calculator">
+      <div class="con1item" id="imageContainer1"></div>
+      <script>
+        var img1 = new Image();
+        img1.src = "Ballmill1.png";
+        img1.alt = "Description of the image";
+        img1.width = 733 * 0.3;
+        img1.height = 747 * 0.3;
 
-      <div id="calc1">
+        var container = document.getElementById("imageContainer1");
+        container.appendChild(img1);
+      </script>
 
-        <div id="title1">
-          <h2>Type1. Planetary Ball Mill</h2>
-        </div>
-
-
-        <div id="imageContainer1"></div>
-        <script>
-          var img1 = new Image();
-          // Set the source (URL) of the image
-          img1.src = "Ballmill1.png";
-
-          // Set other attributes if needed (e.g., alt text, width, height)
-          img1.alt = "Description of the image";
-          img1.width = 733 * 0.3;
-          img1.height = 747 * 0.3;
-
-          var container = document.getElementById("imageContainer1");
-          container.appendChild(img1);
-        </script>
-
-        <div id="expl1">
-          <p>This calculates ~~ orein will fill this.</p>
-        </div>
+      <div class="con1item" id="title1">
+        <h2>Type1. Planetary Ball Mills</h2>
+      </div>
 
 
-        <div id="input1">
+      <div class="con1item" id="expl1">
+        <p>E<sub>impact</sub> and E<sub>total</sub> in planetary ball mills can be calculated based on known
+          parameters: Effective diameter of milling disk, diameter of the jar, the height of the jar, the diameter of
+          the
+          ball, the mass of the ball, the total number of balls, RPM, and milling time.
+        </p>
+      </div>
+    </div>
+    <!--first calculator -->
+    <div class="container2" id="calc1">
 
-          <h3>1. Select a parameter to be calculated.</h3>
-          <label>
-            Parameter :<select id="Target1">
-              <option>--Select a parameter--</option>
-              <option>Cumulative Energy(Et)</option>
-              <option>RPM</option>
-              <option>Time</option>
-            </select>
-          </label><button id="Clear1" class="cl-button">Clear</button>
-          <br><br>
-
-          <h3>2. Please Enter the parameters</h3>
-
-          <label>
-            Machine :<select id="Mac1">
-              <option>--Select a machine--</option>
-              <option>PULVERISETTE 7 premium line</option>
-              <option>PULVERISETTE 7 classic line</option>
-              <option>PULVERISETTE 5/2 classic line</option>
-              <option>Others</option>
-            </select>
-          </label><br>
-
-          <label>
-            Effective diameter of main disk :<input type="number" id=Dp1><select id="Dpu1">
-              <option>mm</option>
-              <option>cm</option>
-              <option>m</option>
-            </select>
-          </label><br>
-
-          <label>
-            Diameter of vial :<input type="number" id=Dv1><select id="Dvu1">
-              <option>mm</option>
-              <option>cm</option>
-              <option>m</option>
-            </select>
-          </label><br>
-
-          <label>
-            Height of vial :<input type="number" id=Hv1><select id="Hvu1">
-              <option>mm</option>
-              <option>cm</option>
-              <option>m</option>
-            </select>
-          </label><br>
-
-          <label>
-            Diameter of a ball :<input type="number" id=Db1><select id="Dbu1">
-              <option>mm</option>
-              <option>cm</option>
-              <option>m</option>
-            </select>
-          </label><br>
-
-          <label>
-            Mass of a ball :<input type="number" id=Mb1><select id="Mbu1">
-              <option>mg</option>
-              <option>g</option>
-              <option>kg</option>
-            </select>
-          </label><br>
-
-          <label>
-            Total number of balls :<input type="number" id=Nb1>
-          </label><br>
-
-          <div class="input-group" id="RPM1G">
-            <label for="RPM" id="RPM1Label">RPM :</label><input type="number" id="RPM1">
-          </div>
-
-          <div class="input-group" id="t1G">
-            <label for="t1" id="t1Label">Time :</label><input type="number" id="t1"><select id="tu1">
-              <option>s</option>
-              <option>m</option>
-            </select>
-          </div>
-
-          <div class="input-group" id="Et1G">
-            <label for="Et1" id="Et1Label">Cumulative E :</label><input type="number" id="Et1"><select id="Etu1">
-              <option>J</option>
-              <option>KJ</option>
-            </select>
-          </div>
-
-          <hr class="hr1">
-
-          <div class="input-group" id="R1G">
-
-            <label for="R1" id="targetLabel1">Result =</label>
-            <input type="text" id="R1"><select id="Ru1">
-              <option></option>
-              <option>J</option>
-              <option>KJ</option>
-              <option>s</option>
-              <option>m</option>
-            </select>
-            <button id="Cal1" class="cal-button">Calculate</button>
-            <label>#<label type="number" id="cur1">0</label></label>
-            <br>
-
-            <label> E<sub>i</sub> =</label>
-            <input type="text" id="Eimpact1"><select id="Eiu1">
-              <option>J</option>
-              <option>KJ</option>
-            </select><br>
-            <label> Filling Factor Q =</label>
-            <input type="text" id="Qfactor1"><br>
-            <button id="add1" class="s-button"> Add </button>
-            <label>#<label type="number" id="tot1">0</label></label>
-            <button id="Save1" class="s-button"> Save </button>
-            <button id="Remove1" class="s-button"> Remove </button>
-
-          </div>
+      <div class="con2item" id="I1title">
+        <div class="line">
+          <label> Conditions </label>
         </div>
       </div>
- 
-      <div id="calc2">
-        <div id="title2">
-          <h2>Type2. Shaker Ball Mill</h2>
+
+
+      <div class="con2item" id="I0title">
+
+        <div class="line">
+          <label> Calculate </label>
         </div>
-        <div id="imageContainer2"></div>
-        <script>
-          var img2 = new Image();
-          // Set the source (URL) of the image
-          img2.src = "Ballmill2.png";
+      </div>
 
-          // Set other attributes if needed (e.g., alt text, width, height)
-          img2.alt = "Description of the image";
-          img2.width = 1047 * 0.3;
-          img2.height = 549 * 0.3;
+      <div class="con2item" id="input1">
 
-          var container = document.getElementById("imageContainer2");
-          container.appendChild(img2);
-        </script>
+        <label>
+          Machine :
+        </label><br>
 
-        <div id="expl2">
-          <p>description.</p>
+        <label>
+          Effective diameter of main disk :
+        </label><br>
+
+        <label>
+          Diameter of jar :
+        </label><br>
+
+        <label>
+          Height of jar :
+        </label><br>
+
+        <label>
+          Diameter of a ball :
+        </label><br>
+
+        <label>
+          Mass of a ball :
+        </label><br>
+
+        <label>
+          Total number of balls :
+        </label><br>
+
+        <div class="input-group" id="RPM1G">
+          <label for="RPM" id="RPM1Label">RPM :</label>
         </div>
 
-        <div id="input2">
+        <div class="input-group" id="t1G">
+          <label for="t1" id="t1Label">Time :</label>
+        </div>
 
-          <h3>1. Select a parameter to be calculated.</h3>
-          <label>
-            Parameter :<select id="Target2">
-              <option>--Select a parameter--</option>
-              <option>Cumulative Energy(Et)</option>
-              <option>Frequency</option>
-              <option>Time</option>
-            </select>
-          </label> <button id="Clear2" class="cl-button">Clear</button>
-          <br><br>
-
-          <h3>2. Please Enter the parameters</h3>
-          <label>Diameter of vial :<input type="number" id=Dv2><select id="Dvu2">
-              <option>mm</option>
-              <option>cm</option>
-              <option>m</option>
-            </select>
-          </label><br>
-          <label>
-            Height of vial :<input type="number" id=Hv2><select id="Hvu2">
-              <option>mm</option>
-              <option>cm</option>
-              <option>m</option>
-            </select>
-          </label><br>
-
-          <label>
-            Diameter of a ball :<input type="number" id=Db2><select id="Dbu2">
-              <option>mm</option>
-              <option>cm</option>
-              <option>m</option>
-            </select>
-          </label><br>
-          <label>
-            Mass of a ball :<input type="number" id=Mb2><select id="Mbu2">
-              <option>mg</option>
-              <option>g</option>
-              <option>kg</option>
-            </select>
-          </label><br>
+        <div class="input-group" id="Et1G">
+          <label for="Et1" id="Et1Label">E<sub>total</sub> :</label>
+        </div>
+      </div>
 
 
-          <label>
-            Total number of balls :<input type="number" id=Nb2>
-          </label><br>
 
-          <div class="input-group" id="f2G">
-            <label for="f2" id="f2Label">Frequency :</label><input type="number" id="f2"><select id="fu2">
-              <option>Hz</option>
-            </select>
-            </label>
-          </div>
+      <div class="con2item" id="sel1">
 
-          <div class="input-group" id="t2G">
-            <label for="t2" id="t2Label">Time :</label><input type="number" id="t2"><select id="tu2">
+        <label>
+          <select id="Mac1">
+            <option>--Select a machine--</option>
+            <option>PULVERISETTE 7 premium line</option>
+            <option>PULVERISETTE 7 classic line</option>
+            <option>PULVERISETTE 5/2 classic line</option>
+            <option>Others</option>
+          </select>
+        </label><br>
+
+        <label>
+          <input type="number" id=Dp1 min="0" required><select id="Dpu1">
+            <option>mm</option>
+            <option>cm</option>
+            <option>m</option>
+          </select>
+        </label><br>
+
+        <label>
+          <input type="number" id=Dv1 min="0" required><select id="Dvu1">
+            <option>mm</option>
+            <option>cm</option>
+            <option>m</option>
+          </select>
+        </label><br>
+
+        <label>
+          <input type="number" id=Hv1 min="0" required><select id="Hvu1">
+            <option>mm</option>
+            <option>cm</option>
+            <option>m</option>
+          </select>
+        </label><br>
+
+        <label>
+          <input type="number" id=Db1 min="0" required><select id="Dbu1">
+            <option>mm</option>
+            <option>cm</option>
+            <option>m</option>
+          </select>
+        </label><br>
+
+        <label>
+          <input type="number" id=Mb1 min="0" required><select id="Mbu1">
+            <option>mg</option>
+            <option>g</option>
+            <option>kg</option>
+          </select>
+        </label><br>
+
+        <label>
+          <input type="number" id=Nb1 min="0" required>
+        </label><br>
+
+        <div class="input-group" id="RPM1GB">
+          <label for="RPM" id="RPM1Label"><input type="number" id="RPM1" min="0" required></label>
+        </div>
+
+        <div class="input-group" id="t1GB">
+          <label for="t1" id="t1Label"><input type="number" id="t1" min="0" required><select id="tu1">
               <option>s</option>
               <option>m</option>
-            </select>
-          </div>
-
-          <div class="input-group" id="Et2G">
-            <label for="Et2" id="Et2Label">Cumulative E :</label><input type="number" id="Et2"><select id="Etu2">
-              <option>J</option>
-              <option>KJ</option>
-            </select>
-
-          </div>
-          <hr class="hr2">
-
-
-
-          <div class="input-group" id="R2G">
-
-            <label for="R2" id="targetLabel2">Result =
-            </label><input type="text" id=R2><select id="Ru2">
-              <option></option>
-              <option>J</option>
-              <option>KJ</option>
-              <option>Hz</option>
-
-              <option>s</option>
-              <option>m</option>
-            </select>
-
-            <button id="Cal2" class="cal-button">Calculate</button>
-            <label for="cur2">#<label type="number" id="cur2">0</label></label>
-            <br>
-            <label> E<sub>i</sub> =</label>
-            <input type="text" id="Eimpact2"><select id="Eiu2">
-              <option>J</option>
-              <option>KJ</option>
-            </select><br>
-            <label> Filling Factor Q =</label>
-            <input type="text" id="Qfactor2"><br>
-            <button id="add2" class="s-button"> Add </button>
-            <label for="tot2">#<label type="number" id="tot2">0</label></label>
-            <button id="Save2" class="s-button"> Save </button>
-            <button id="Remove2" class="s-button"> Remove </button>
-
-
-          </div>
+            </select></label>
         </div>
+
+        <div class="input-group" id="Et1GB">
+          <label for="Et1" id="Et1Label"> <input type="number" id="Et1" min="0" required><select id="Etu1">
+              <option>J</option>
+              <option>KJ</option>
+            </select></label>
+        </div>
+      </div>
+
+
+
+
+      <div class="con2item" id="input0">
+
+        <label>
+
+          Parameter :
+        </label>
+
+      </div>
+      <div class="con2item" id="sel0">
+        <label><select id="Target1">
+            <option>--Select a parameter--</option>
+            <option>Cumulative Energy(Etotal)</option>
+            <option>RPM</option>
+            <option>Time</option>
+          </select><button id="Clear1" class="cl-button">Clear</button>
+        </label>
+      </div>
+
+      <div class="con2item" id="R1title">
+        <div class="line">
+          <label> Output </label>
+        </div>
+      </div>
+
+
+      <div class="con2item" id="R1GG">
+        <div class="input-group" id="R1G">
+
+          <label for="R1" id="targetLabel1">Result =</label>
+
+          <br>
+
+          <label> E<sub>impact</sub> =</label>
+          <br>
+
+          <label> &phi;<sub>filling factor</sub> =</label>
+
+        </div>
+      </div>
+      <div class="con2item" id="R1BB">
+        <div class="input-group" id="R1B">
+
+          <input type="text" id="R1"><select id="Ru1">
+            <option></option>
+            <option>J</option>
+            <option>KJ</option>
+            <option>s</option>
+            <option>m</option>
+          </select>
+
+          <br>
+
+          <input type="text" id="Eimpact1"><select id="Eiu1">
+            <option>J</option>
+            <option>KJ</option>
+          </select><br>
+
+          <input type="text" id="Qfactor1"><br>
+        </div>
+      </div>
+      <div class="con2item" id="R1CC">
+
+        <div class="input-group" id="R1C">
+
+
+          <button id="Cal1" class="cal-button">Calculate</button>
+          <label>#<label type="number" id="cur1">0</label></label><button id="add1" class="s-button"> Add </button>
+          <label>#<label type="number" id="tot1">0</label></label>
+          <button id="Save1" class="s-button"> Save </button>
+          <button id="Remove1" class="s-button"> Remove </button>
+
+        </div>
+
+        <p>Add #0 of calculations added to the data table.</p>
+
+
       </div>
 
     </div>
-  
+
+    <br>
+    <br>
+
+    <!--second calculator introduction-->
+
+    <div class="container" id="intro2">
+
+      <div class="con3item" id="imageContainer2"></div>
+      <script>
+        var img2 = new Image();
+        // Set the source (URL) of the image
+        img2.src = "Ballmill2.png";
+
+        // Set other attributes if needed (e.g., alt text, width, height)
+        img2.alt = "Description of the image";
+        img2.width = 1047 * 0.3;
+        img2.height = 549 * 0.3;
+
+        var container = document.getElementById("imageContainer2");
+        container.appendChild(img2);
+      </script>
+
+      <div class="con3item" id="title2">
+        <h2>Type2. Mixer mills</h2>
+      </div>
 
 
-  <li><a target="blank" href="https://www.lungerichlab.com/">Paper link</a></li>
-  <li><a target="blank" href="https://www.lungerichlab.com/">Lungerich Group</a></li>
-  <li><a target="blank" href="https://scholar.google.com/citations?user=SqZM0A4AAAAJ&hl=de">Google Scholar</a></li>
-  <p>This Webpage constructed and maintained by "". If you have any trouble please contact. @gamil.com</p>
+      <div class="con3item" id="expl2">
+        <p>For “theory to practice”, the commercially available mill is taken to simulate kinematics of a
+          one-dimension
+          mill. E<sub>impact</sub> and cumulative energy E<sub>total</sub> are calculated based on known parameters:
+          Diameter of the jar, length of the jar, diameter of the ball, mass of the ball, total number of balls,
+          frequency, and time.
+        </p>
+      </div>
+    </div>
+    <!-- 2nd calculator -->
+    <div class="container2" id="calc2">
+
+      <div class="con4item" id="I1title2">
+        <div class="line2">
+          <label> Conditions </label>
+        </div>
+      </div>
+
+      <div class="con4item" id="I0title2">
+        <div class="line2">
+          <label> Calculate </label>
+        </div>
+      </div>
+
+      <div class="con4item" id="input1-2">
+
+        <label>Diameter of jar :
+        </label><br>
+        <label>
+          Length of jar :
+        </label><br>
+
+        <label>
+          Diameter of a ball :
+        </label><br>
+        <label>
+          Mass of a ball :
+        </label><br>
+
+
+        <label>
+          Total number of balls :
+        </label><br>
+
+        <div class="input-group" id="f2G">
+          <label for="f2" id="f2Label">Frequency(Hz) :</label>
+          </label>
+        </div>
+
+        <div class="input-group" id="t2G">
+          <label for="t2" id="t2Label">Time :</label>
+        </div>
+
+        <div class="input-group" id="Et2G">
+          <label for="Et2" id="Et2Label"> E<sub>total</sub> :</label>
+        </div>
+      </div>
+
+      <div class="con4item" id="sel1-2">
+
+        <label><input type="number" id=Dv2 min="0" required><select id="Dvu2">
+            <option>mm</option>
+            <option>cm</option>
+            <option>m</option>
+          </select>
+        </label><br>
+        <label>
+          <input type="number" id=Hv2 min="0" required><select id="Hvu2">
+            <option>mm</option>
+            <option>cm</option>
+            <option>m</option>
+          </select>
+        </label><br>
+
+        <label>
+          <input type="number" id=Db2 min="0" required><select id="Dbu2">
+            <option>mm</option>
+            <option>cm</option>
+            <option>m</option>
+          </select>
+        </label><br>
+        <label>
+          <input type="number" id=Mb2 min="0" required><select id="Mbu2">
+            <option>mg</option>
+            <option>g</option>
+            <option>kg</option>
+          </select>
+        </label><br>
+
+
+        <label>
+          <input type="number" id=Nb2 min="0" required>
+        </label><br>
+
+        <div class="input-group" id="f2GB">
+          <input type="number" id="f2" min="0" required>
+          </label>
+        </div>
+
+        <div class="input-group" id="t2GB">
+          <input type="number" id="t2" min="0" required><select id="tu2">
+            <option>s</option>
+            <option>m</option>
+          </select>
+        </div>
+
+        <div class="input-group" id="Et2GB">
+          <input type="number" id="Et2" min="0" required><select id="Etu2">
+            <option>J</option>
+            <option>KJ</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="con4item" id="input0-2">
+
+        <label>
+          Parameter:
+        </label>
+        <br>
+      </div>
+
+      <div class="con4item" id="sel0-2">
+        <select id="Target2">
+          <option>--Select a parameter--</option>
+          <option>Cumulative Energy(Etotal)</option>
+          <option>Frequency</option>
+          <option>Time</option>
+        </select><button id="Clear2" class="cl-button">Clear</button>
+      </div>
+
+
+
+      <div class="con4item" id="R2title">
+        <div class="line2">
+          <label> Output </label>
+        </div>
+      </div>
+
+      <div class="con4item" id="R2GG">
+        <div class="input-group" id="R2G">
+
+          <label for="R2" id="targetLabel2">Result =</label><br>
+
+          <label> E<sub>impact</sub> =</label><br>
+
+          <label> &phi;<sub>filling factor</sub> =</label>
+
+        </div>
+      </div>
+
+
+
+      <div class="con4item" id="R2BB">
+        <input type="text" id=R2><select id="Ru2">
+          <option></option>
+          <option>J</option>
+          <option>KJ</option>
+          <option>Hz</option>
+
+          <option>s</option>
+          <option>m</option>
+        </select>
+        <br>
+        <input type="text" id="Eimpact2"><select id="Eiu2">
+          <option>J</option>
+          <option>KJ</option>
+        </select><br>
+        <input type="text" id="Qfactor2"><br>
+      </div>
+
+
+      <div class="con4item" id="R2CC">
+
+        <button id="Cal2" class="cal-button">Calculate</button>
+        <label for="cur2">#<label type="number" id="cur2">0</label></label>
+        <button id="add2" class="s-button"> Add </button>
+        <label for="tot2">#<label type="number" id="tot2">0</label></label>
+        <button id="Save2" class="s-button"> Save </button>
+        <button id="Remove2" class="s-button"> Remove </button>
+
+        <p>Add #0 of calculations added to the data table.
+        <p>
+
+
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <p class="number"> ** The number on the right side of the Calculate button shows the current calculation number.
+      It
+      increases when the previous calculation is added. The number on the right side of the Add button shows the
+      number
+      of
+      calculations added to the data table.<br>
+      ** If you don't add anything and click save, the current calculation will be saved.</p>
+    <ul>
+
+      <li><a target="blank" href="https://www.lungerichlab.com/">Paper link</a></li>
+      <li><a target="blank" href="https://www.lungerichlab.com/">Lungerich Group</a></li>
+      <li><a target="blank" href="https://scholar.google.com/citations?user=SqZM0A4AAAAJ&hl=de">Google Scholar</a>
+      </li>
+    </ul>
+    <p>This web page was constructed and is maintained by <a target="blank"
+        href="https://scholar.google.com/citations?hl=de&user=GPx0UU4AAAAJ">Sol Lee</a>. If you have any trouble
+      please
+      contact. sol.lee.rk@gamil.com</p>
 
 
   </div>
 
-
   <script src="script.js"></script>
-
 </body>
 
 </html>
