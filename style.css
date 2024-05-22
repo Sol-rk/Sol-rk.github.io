@@ -1,8 +1,25 @@
 body {
   font-family: Arial, sans-serif;
-  margin: 10px 10px 10px 10px;
-  padding: 0;
+  margin: 40px ;
+  padding: 0 ;
   background-color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:100%;
+  max-width:900px;
+  
+}
+
+.wapper {
+  display: flex;
+  flex-direction: column;
+  /* 컨테이너들을 세로로 배치 */
+
+  justify-content: center;
+  align-items: center;
+  margin:auto;
+  
 }
 
 h1 {
@@ -10,57 +27,62 @@ h1 {
   margin-bottom: 10px;
 }
 
-.button{
+.button {
   font-size: 14px;
-  }
-.number{
+}
+
+.number {
   font-size: 14px;
   color: #FF00BF
 }
 
 
 /* Calculator Styles */
-.calculator {
+
+.container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  /* Two columns of equal width */
-  grid-gap: 10px;
+  margin: 0px 0px;
+  /* */
+  width: 950px;
+  grid-gap: 0px;
 }
 
-#calc1 {
+
+.intro1 {
   display: grid;
-  grid-template-columns: 230px auto;
-  grid-template-rows: min-content min-content min-content;
+  grid-template-columns: 250px 650px;
 
   padding: 0px;
-  border: 4px solid #F6CEEC;
-  border-radius: 5px;
-  width: 100%;
   box-sizing: border-box;
-  min-width: 500px;
+  width: 900px
 }
 
 #title1 {
 
-grid-column: span 2;
-grid-row: 1;
-  padding: 20px 20px;
-  border: 0px solid; 
-  border-radius: 0px;
-  border-color:#F6CEEC;
-  background-color:#F6CEEC;
+  grid-column: 2;
+  grid-row: 1;
+  padding: 0px 0px;
+  width: 650px;
+  background-color: #F6CEEC;
+
   h2 {
     color: #FF00BF;
-    margin: 0px 0px 10px 0px;   
-    text-align: center;
+    margin: 0px 10px 0px 0px;
+    text-align: left;
+    position: relative;
+    top: 10px;
+    /* Adjust this value to move the text vertically */
+    left: 100px;
+    /* Adjust this value to move the text horizontally */
   }
 }
 
 #imageContainer1 {
   grid-column: 1;
-  grid-row: 2;
-  background-color:#F6CEEC;
-  padding: 0px;
+  grid-row: span 2;
+  width: 250px;
+  background-color: #F6CEEC;
+  padding: 0px 0px 0px 0px;
   margin: 0px 0px 0px 0px;
 }
 
@@ -68,117 +90,486 @@ grid-row: 1;
 
   grid-column: 2;
   grid-row: 2;
-  padding: 0px 0px 0px 10px;
-
-  background-color:#F6CEEC;
+  padding: 0px 0px 0px 0px;
+  width: 650px;
+  background-color: #F6CEEC;
+  margin: 0px 0px 0px 0px;
 
   p {
     color: #B40486;
     margin: 0px;
   }
 }
-#input1 {
-  grid-column: span 2;
-  grid-row: 3;
-  padding: 0px;
-  box-sizing: border-box;
-  margin: 20px;
-  
-}
 
-#calc2 {
+/*1st calculator*/
+.container2 {
   display: grid;
-  grid-template-columns: 310px auto;
-  grid-template-rows: min-content min-content min-content;
-  padding: 0px;
-  border: 4px solid #CEE3F6;
-  border-radius: 5px;
-  width: 100%;
-  min-width: 500px;
-  box-sizing: border-box;
+  margin: 0px 0px;
+  /* */
+  width: 900px;
 }
-#imageContainer2 {
 
-  grid-column: 1;
-  grid-row: 2;
-  background-color:#CEE3F6;
+#calc1 {
+  display: grid;
+  grid-template-rows: min-content min-content min-content min-content min-content;
+  grid-template-columns: 250px 250px 120px 280px;
   padding: 0px;
+  box-sizing: border-box;
+
+}
+
+#I1title {
+  grid-column: 1/ span 2;
+  grid-row: 1;
+  padding: 0px;
+  box-sizing: border-box;
+  margin: 10px 5px 0px 0px;
+  border-left: 4px solid #F6CEEC;
+  border-right: 4px solid #F6CEEC;
+  border-top: none;
+  border-bottom: none;
+
+}
+
+#I0title {
+  grid-column: 3/ span 2;
+  grid-row: 1;
+  padding: 0px;
+  box-sizing: border-box;
+  margin: 10px 0px 0px 5px;
+  border-left: 4px solid #F6CEEC;
+  border-right: 4px solid #F6CEEC;
+  border-top: none;
+  border-bottom: none;
+}
+
+
+#input1 {
+  grid-column: 1;
+  grid-row: 2/span 4;
+  padding: 10px 0px 10px 10px;
+  box-sizing: border-box;
   margin: 0px;
+
+  /* Set the desired width */
+  /*height: 150px;  Set the desired height */
+  border-left: 4px solid #F6CEEC;
+  border-right: none;
+  border-top: none;
+  border-bottom: 4px solid #F6CEEC;
+  font-size: 16px;
+  /* 텍스트 크기 설정 */
+  line-height: 33px;
+  /* 텍스트 줄 높이를 버튼 높이로 설정 */
+}
+
+#sel1 {
+  grid-column: 2;
+  grid-row: span 4;
+  padding: 10px 0px 10px 10px;
+  box-sizing: border-box;
+  margin: 0px 5px 0px 0px;
+
+  border-left: none;
+  border-right: 4px solid #F6CEEC;
+  border-top: none;
+  border-bottom: 4px solid #F6CEEC;
+}
+
+
+
+
+#input0 {
+  grid-column: 3;
+  grid-row: 2;
+  padding: 30px 0px 40px 10px;
+  box-sizing: border-box;
+  margin: 0px 0px 0px 5px;
+  border-left: 4px solid #F6CEEC;
+  border-right: none;
+  border-top: none;
+  /*없애기*/
+  border-bottom: 4px solid #F6CEEC;
+  /*border-radius: 5px;*/
+  font-size: 16px;
+  /* 텍스트 크기 설정 */
+  line-height: 33px;
+  /* 텍스트 줄 높이를 버튼 높이로 설정 */
+
+}
+
+#sel0 {
+  grid-column: 4;
+  grid-row: 2;
+  padding: 30px 0px 40px 10px;
+  /* Adjust padding as needed */
+  box-sizing: border-box;
+  margin: 0px 0px 0px 0px;
+  border-left: none;
+  border-right: 4px solid #F6CEEC;
+  border-bottom: 4px solid #F6CEEC;
+  border-top: none;
+
+}
+
+#R1title {
+  grid-column: 3 / span 2;
+  grid-row: 3;
+  padding: 0px 0px 0px 0px;
+  box-sizing: border-box;
+  margin: 30px 0px 0px 5px;
+  border-left: 4px solid #F6CEEC;
+  border-right: 4px solid #F6CEEC;
+  border-top: none;
+  border-bottom: none;
+  height: 30px;
+
+}
+
+
+#R1GG {
+  font-size: 16px;
+  /* 텍스트 크기 설정 */
+  line-height: 33px;
+  /* 텍스트 줄 높이를 버튼 높이로 설정 */
+  grid-column: 3;
+  grid-row: 4;
+  padding: 0 0 0 10px;
+  box-sizing: border-box;
+  margin: 0px 0px 0px 5px;
+
+  border-left: 4px solid #F6CEEC;
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+}
+
+
+#R1BB {
+  grid-column: 4;
+  grid-row: 4;
+  padding: 0 0 0 10px;
+  box-sizing: border-box;
+  margin: 0px 0px 0px 0px;
+  border-left: none;
+  border-right: 4px solid #F6CEEC;
+  border-top: none;
+  border-bottom: none;
+}
+
+#R1CC {
+  grid-column: 3 / span 2;
+  grid-row: 5;
+  padding: 0 0 0 10px;
+  box-sizing: border-box;
+  margin: 0px 0px 0px 5px;
+  border-left: 4px solid #F6CEEC;
+  border-right: 4px solid #F6CEEC;
+  border-top: none;
+  border-bottom: 4px solid #F6CEEC;
+
+}
+
+
+
+
+/*2nd introduction */
+.container {
+  display: grid;
+  margin: 0px 0px;
+  /* */
+  width: 900px;
+  grid-gap: 0px;
+}
+
+.intro2 {
+  display: grid;
+  grid-template-columns: 350px 550px;
+
+  padding: 0px;
+  box-sizing: border-box;
+  width: 900px
 }
 
 #title2 {
 
-grid-column: span 2;
-grid-row: 1;
-  padding: 20px 20px;
-  border: 0px solid; 
-  border-radius: 0px;
-  border-color:#CEE3F6;
-  background-color:#CEE3F6;
+  grid-column: 2;
+  grid-row: 1;
+  padding: 0px 0px;
+  width: 550px;
+  background-color: #CEE3F6;
 
   h2 {
     color: #0080FF;
-    margin: 0px 0px 10px 0px;
-    text-align: center;
+    margin: 0px 10px 0px 0px;
+    text-align: left;
+    position: relative;
+    top: 10px;
+    /* Adjust this value to move the text vertically */
+    left: 100px;
+    /* Adjust this value to move the text horizontally */
   }
 }
 
+#imageContainer2 {
+  grid-column: 1;
+  grid-row: span 2;
+  width: 350px;
+  background-color: #CEE3F6;
+  margin: 0px 0px 0px 0px;
+}
+
 #expl2 {
+
   grid-column: 2;
   grid-row: 2;
+  padding: 0px 0px 0px 0px;
+  width: 550px;
+  background-color: #CEE3F6;
+  margin: 0px 0px 0px 0px;
 
-  padding: 0px;
-  margin: 0px;
-  border: 0px solid;
-  border-radius: 0px;
-  border-color:#CEE3F6;
-  background-color:#CEE3F6;
-    
   p {
     color: #045FB4;
     margin: 0px;
   }
 }
 
-#input2 {
-  grid-column: span 2;
-  grid-row: 3;
-  padding: 0px;
-  margin: 20px;
+/* 2nd calculator*/
+.container2 {
+  display: grid;
+  margin: 0px 0px;
+  width: 900px;
+}
+
+#calc2 {
+  display: grid;
+  grid-template-rows: min-content min-content min-content min-content min-content;
+  grid-template-columns: 250px 250px 120px 280px;
   box-sizing: border-box;
+  width: 900px;
+
+
+}
+
+#I1title2 {
+  grid-column: 1/ span 2;
+  grid-row: 1;
+  padding: 0px;
+  box-sizing: border-box;
+  margin: 10px 5px 0px 0px;
+  border-left: 4px solid #CEE3F6;
+  border-right: 4px solid #CEE3F6;
+  border-bottom: none;
+
+
+}
+
+#I0title2 {
+  grid-column: 3/ span 2;
+  grid-row: 1;
+  padding: 0px;
+  box-sizing: border-box;
+  margin: 10px 0px 0px 5px;
+  border-left: 4px solid #CEE3F6;
+  border-right: 4px solid #CEE3F6;
+  border-top: none;
+  border-bottom: none;
 }
 
 
-.hr3 {
-  border: none;
-  /* Remove default border */
-  height: 3px;
-  /* Set the height */
-  background-color: #000;
-  /* Set the background color */
-  margin: 10px;
-  /* Adjust margin as needed */
+#input1-2 {
+  grid-column: 1;
+  grid-row: 2 / span 4;
+  padding: 30px 0px 0px 10px;
+  box-sizing: border-box;
+  margin: 0px 0px 0px 0px;
+
+  /* Set the desired width */
+  /*height: 150px;  Set the desired height */
+  border-left: 4px solid #CEE3F6;
+  border-right: none;
+  border-top: none;
+  border-bottom: 4px solid #CEE3F6;
+  font-size: 16px;
+  /* 텍스트 크기 설정 */
+  line-height: 33px;
+  /* 텍스트 줄 높이를 버튼 높이로 설정 */
 }
-.hr1 {
-  border: none;
-  /* Remove default border */
-  height: 3px;
-  /* Set the height */
+
+#sel1-2 {
+  grid-column: 2;
+  grid-row: 2/ span 4;
+  padding: 30px 0px 0px 10px;
+  box-sizing: border-box;
+  margin: 0px 5px 0px 0px;
+
+  border-left: none;
+  border-right: 4px solid #CEE3F6;
+  border-top: none;
+  border-bottom: 4px solid #CEE3F6;
+}
+
+
+#input0-2 {
+  font-size: 16px;
+  /* 텍스트 크기 설정 */
+  line-height: 33px;
+  /* 텍스트 줄 높이를 버튼 높이로 설정 */
+  grid-column: 3;
+  grid-row: 2;
+  padding: 30px 0px 40px 10px;
+  box-sizing: border-box;
+  margin: 0px 0px 0px 5px;
+  border-left: 4px solid #CEE3F6;
+  border-right: none;
+  border-top: none;
+  /*없애기*/
+  border-bottom: 4px solid #CEE3F6;
+  /*border-radius: 5px;*/
+
+}
+
+#sel0-2 {
+  grid-column: 4;
+  grid-row: 2;
+  padding: 30px 0px 40px 10px;
+  /* Adjust padding as needed */
+  box-sizing: border-box;
+  margin: 0px 0px 0px 0px;
+  border-left: none;
+  border-right: 4px solid #CEE3F6;
+  border-bottom: 4px solid #CEE3F6;
+  border-top: none;
+
+}
+
+#R2title {
+  grid-column: 3 / span 2;
+  grid-row: 3;
+  padding: 0px 0px 0px 0px;
+  box-sizing: border-box;
+  margin: 0px 0px 0px 5px;
+  border-left: 4px solid #CEE3F6;
+  border-right: 4px solid #CEE3F6;
+  border-top: none;
+  border-bottom: none;
+
+
+}
+
+
+#R2GG {
+  font-size: 16px;
+  /* 텍스트 크기 설정 */
+  line-height: 33px;
+  /* 텍스트 줄 높이를 버튼 높이로 설정 */
+  grid-column: 3;
+  grid-row: 4;
+  padding: 10px 0px 0px 10px;
+  box-sizing: border-box;
+  margin: 0px 0px 0px 5px;
+
+  border-left: 4px solid #CEE3F6;
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+}
+
+
+#R2BB {
+  grid-column: 4;
+  grid-row: 4;
+  padding: 10px 0px 0px 10px;
+  box-sizing: border-box;
+  margin: 0px 0px 0px 0px;
+  border-left: none;
+  border-right: 4px solid #CEE3F6;
+  border-top: none;
+  border-bottom: none;
+}
+
+#R2CC {
+  grid-column: 3 / span 2;
+  grid-row: 5;
+  padding: 0 0 0 10px;
+  box-sizing: border-box;
+  margin: 0px 0px 0px 5px;
+  border-left: 4px solid #CEE3F6;
+  border-right: 4px solid #CEE3F6;
+  border-top: none;
+  border-bottom: 4px solid #CEE3F6;
+
+}
+
+
+
+
+.line {
+  display: flex;
+  flex-basis: 100%;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: #FF00BF;
+  margin: 0;
+}
+
+.line::before {
+
+  content: "";
+  flex-grow: 1;
+  margin-right: 10px;
+  /* Space between text and line */
+  height: 4px;
   background-color: #F6CEEC;
-  /* Set the background color */
-  margin: 10px 0px 
-  /* Adjust margin as needed */
 }
-.hr2 {
-  border: none;
-  /* Remove default border */
-  height: 3px;
-  /* Set the height */
+
+.line::after {
+
+  content: "";
+  flex-grow: 1;
+  margin-left: 10px;
+  /* Space between text and line */
+  height: 4px;
+  background-color: #F6CEEC;
+  font-size: 0px;
+
+  line-height: 0px;
+}
+
+.line2 {
+  display: flex;
+  flex-basis: 100%;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: #0080FF;
+  margin: 0;
+}
+
+.line2::before {
+
+  content: "";
+  flex-grow: 1;
+  margin-right: 10px;
+  /* Space between text and line */
+  height: 4px;
   background-color: #CEE3F6;
-  /* Set the background color */
-  margin: 10px 0px 
-  /* Adjust margin as needed */
 }
+
+.line2::after {
+
+  content: "";
+  flex-grow: 1;
+  margin-left: 10px;
+  /* Space between text and line */
+  height: 4px;
+  background-color: #CEE3F6;
+  font-size: 0px;
+
+  line-height: 0px;
+}
+
 
 /* Form Styles */
 
@@ -186,24 +577,33 @@ grid-row: 1;
 
 .cl-button,
 .cal-button,
-.s-button
-{
+.s-button {
   padding: 8px 16px;
-  
+
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  vertical-align: middle;
   transition: background-color 0.3s;
   outline: none;
   display: inline-block;
-  margin: 10px 0px 10px 10px;
+  margin: 0px;
 }
 
-#Cal1,#Clear1,#Save1,#add1,#Remove1 {
+#Cal1,
+#Clear1,
+#Save1,
+#add1,
+#Remove1 {
   background-color: #F6CEEC;
 }
-#Cal2,#Clear2,#Save2,#add2,#Remove2 {
+
+#Cal2,
+#Clear2,
+#Save2,
+#add2,
+#Remove2 {
   background-color: #CEE3F6;
 }
 
@@ -212,37 +612,41 @@ grid-row: 1;
   background-color: #01DF01;
   /* Change the color slightly on hover */
 }
+
 #Clear1:hover,
 #Clear2:hover {
   background-color: red;
   /* Change the color slightly on hover */
 }
+
 #Save1:hover,
-#add1:hover
-{
+#add1:hover {
   box-shadow: 0 0 10px 5px #F781D8;
   /* Change the color slightly on hover */
 }
+
 #Save2:hover,
-#add2:hover
-{
+#add2:hover {
   box-shadow: 0 0 10px 5px #A9D0F5;
   /* Change the color slightly on hover */
 }
+
 #Remove1:hover,
-#Remove2:hover
-{
-  background-color: red; }
+#Remove2:hover {
+  background-color: red;
+}
 
 
-select,input {
+select,
+input {
   height: 33px;
-  margin: 10px 0px 10px 5px;
+  margin: 0px;
   border-width: 1px;
   border-radius: 4px;
   box-sizing: border-box;
   /* Set a specific height for consistency */
 }
+
 input {
   width: 80px;
 }
