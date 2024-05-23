@@ -13,7 +13,7 @@ body {
   display: flex;
   flex-direction: column;
   /* 컨테이너들을 세로로 배치 */
-  width:100%;
+  width:90%;
   max-width: 900px; 
 }
 
